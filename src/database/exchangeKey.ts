@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export type ExchangeKey = {
   userId: string; // Primary Key
   exchangeId: string; // Sory Key - Format <Exchange>:<Nickname> - Ex COINBASE:Personal
