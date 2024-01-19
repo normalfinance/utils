@@ -10,8 +10,6 @@ Are there any issues or other links reviewers should consult to understand this 
 * See: #67890
 -->
 
-## Examples
-
 <!--
 Are there any examples of this change being used in another repository?
 
