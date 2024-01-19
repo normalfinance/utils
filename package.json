@@ -1,7 +1,7 @@
 {
   "name": "@normalfinance/utils",
   "version": "0.1.0",
-  "description": "Various JavaScript / TypeScript utilities of wide relevance to the Normal codebase.",
+  "description": "Various JavaScript / TypeScript utilities of wide relevance to the Normal codebase",
   "homepage": "https://github.com/normalfinance/utils#readme",
   "bugs": {
     "url": "https://github.com/normalfinance/utils/issues"

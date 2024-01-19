@@ -6,7 +6,7 @@
 % complete URL for a repository on GitHub. This URL must include the ".git"
 % extension.
 repo_name(RepoUrl, RepoName) :-
-  Prefix = 'https://github.com/MetaMask/',
+  Prefix = 'https://github.com/normalfinance/',
   atom_length(Prefix, PrefixLength),
   Suffix = '.git',
   atom_length(Suffix, SuffixLength),
@@ -45,20 +45,20 @@ gen_enforced_field(WorkspaceCwd, 'description', DescriptionWithoutTrailingPeriod
 gen_enforced_field(WorkspaceCwd, 'homepage', CorrectHomepageUrl) :-
   workspace_field(WorkspaceCwd, 'repository.url', RepoUrl),
   repo_name(RepoUrl, RepoName),
-  atomic_list_concat(['https://github.com/MetaMask/', RepoName, '#readme'], CorrectHomepageUrl).
+  atomic_list_concat(['https://github.com/normalfinance/', RepoName, '#readme'], CorrectHomepageUrl).
 
 % The bugs URL of the package must point to the Issues page for the repository.
 gen_enforced_field(WorkspaceCwd, 'bugs.url', CorrectBugsUrl) :-
   \+ workspace_field(WorkspaceCwd, 'private', true),
   workspace_field(WorkspaceCwd, 'repository.url', RepoUrl),
   repo_name(RepoUrl, RepoName),
-  atomic_list_concat(['https://github.com/MetaMask/', RepoName, '/issues'], CorrectBugsUrl).
+  atomic_list_concat(['https://github.com/normalfinance/', RepoName, '/issues'], CorrectBugsUrl).
 
 % The package must specify Git as the repository type.
 gen_enforced_field(WorkspaceCwd, 'repository.type', 'git').
 
-% The package must match the URL of a repo within the MetaMask organization.
-gen_enforced_field(WorkspaceCwd, 'repository.url', 'https://github.com/MetaMask/<insert repo name here>.git') :-
+% The package must match the URL of a repo within the Normal organization.
+gen_enforced_field(WorkspaceCwd, 'repository.url', 'https://github.com/normalfinance/utils.git') :-
   workspace_field(WorkspaceCwd, 'repository.url', RepoUrl),
   \+ repo_name(RepoUrl, _).
 
