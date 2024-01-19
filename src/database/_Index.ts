@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export type Index = {
   id: string; // Primary Key
   title: string; // GSI

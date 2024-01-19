@@ -1,4 +1,4 @@
-import { LiveIndexIds } from './database';
+import type { LiveIndexIds } from './database';
 
 export const FREE_PLAN_MAX_FREE_FEES = 10;
 

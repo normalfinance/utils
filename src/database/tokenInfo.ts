@@ -1,4 +1,4 @@
-import { CoinMarketCapQuote } from '../api/coinMarketCap';
+import type { CoinMarketCapQuote } from '../api/coinMarketCap';
 
 export type TokenInfo = {
   date: string; // Primary Key - YYYY-MM-DD

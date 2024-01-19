@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export enum HTTPErrorMessage {
   ONLY_GET = 'Only GET is accepted',
   ONLY_POST = 'Only POST is accepted',

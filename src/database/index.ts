@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export * from './_Index';
 export * from './exchangeKey';
 export * from './feeSummary';
