@@ -53,7 +53,9 @@
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
     "@yarnpkg/types": "^4.0.0-rc.52",
+    "decimal.js": "^10.4.3",
     "depcheck": "^1.4.3",
+    "drizzle-orm": "^0.30.7",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "~2.26.0",
@@ -85,9 +87,5 @@
       "@lavamoat/preinstall-always-fail": false,
       "tsup>esbuild": true
     }
-  },
-  "dependencies": {
-    "decimal.js": "^10.4.3",
-    "drizzle-orm": "^0.30.7"
   }
 }

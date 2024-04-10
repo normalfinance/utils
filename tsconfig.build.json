@@ -8,7 +8,8 @@
     "noEmit": false,
     "outDir": "dist/types",
     "rootDir": "src",
-    "sourceMap": true
+    "sourceMap": true,
+    "skipLibCheck": true
   },
   "include": ["./src/**/*.ts"],
   "exclude": [
@@ -19,6 +20,6 @@
     "./src/**/__snapshots__/**/*",
     "./src/**/*.test.ts",
     "./src/**/*.test-d.ts",
-    "./src/**/*.test.*.ts"
+    "./src/**/*.test.*.ts",
   ]
 }
