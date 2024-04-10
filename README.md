@@ -1,4 +1,4 @@
-# MetaMask Module Template
+# Normal Finance Utils
 
 This TypeScript module is maintained in the style of the MetaMask team.
 
