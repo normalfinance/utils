@@ -85,5 +85,9 @@
       "@lavamoat/preinstall-always-fail": false,
       "tsup>esbuild": true
     }
+  },
+  "dependencies": {
+    "decimal.js": "^10.4.3",
+    "drizzle-orm": "^0.30.7"
   }
 }
