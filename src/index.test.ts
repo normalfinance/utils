@@ -1,9 +1,7 @@
-// import greeter from '.';
+import { STABLECOINS } from './exchange';
 
-// describe('Test', () => {
-//   it('greets', () => {
-//     const name = 'Huey';
-//     const result = greeter(name);
-//     expect(result).toBe('Hello, Huey!');
-//   });
-// });
+describe('Test', () => {
+  it('sTABLECOINS', () => {
+    expect(STABLECOINS).toHaveLength(10);
+  });
+});
