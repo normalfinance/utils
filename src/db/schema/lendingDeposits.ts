@@ -10,8 +10,8 @@ import {
 
 import { lendingProducts } from './lendingProducts';
 
-export type SelectLendingDeposit = typeof lendingDeposits.$inferSelect;
-export type InsertLendingDeposit = typeof lendingDeposits.$inferInsert;
+export type LendingDeposit = typeof lendingDeposits.$inferSelect;
+export type NewLendingDeposit = typeof lendingDeposits.$inferInsert;
 
 export const lendingDeposits = pgTable('lendingDeposits', {
   id: serial('id').primaryKey(),

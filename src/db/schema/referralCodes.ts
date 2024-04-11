@@ -3,8 +3,8 @@ import { pgTable, varchar, char, serial, timestamp } from 'drizzle-orm/pg-core';
 
 import { referrals } from './referrals';
 
-export type SelectReferralCode = typeof referralCodes.$inferSelect;
-export type InsertReferralCode = typeof referralCodes.$inferInsert;
+export type ReferralCode = typeof referralCodes.$inferSelect;
+export type NewReferralCode = typeof referralCodes.$inferInsert;
 
 export const referralCodes = pgTable('referralCodes', {
   id: serial('id').primaryKey(),

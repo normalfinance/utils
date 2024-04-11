@@ -11,8 +11,8 @@ import {
 import { lendingDeposits } from './lendingDeposits';
 import { lendingWithdrawals } from './lendingWithdrawal';
 
-export type SelectLendingUser = typeof lendingUsers.$inferSelect;
-export type InsertLendingUser = typeof lendingUsers.$inferInsert;
+export type LendingUser = typeof lendingUsers.$inferSelect;
+export type NewLendingUser = typeof lendingUsers.$inferInsert;
 
 export const lendingUsers = pgTable('lendingUsers', {
   id: serial('id').primaryKey(),

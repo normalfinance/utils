@@ -9,16 +9,23 @@ import {
   decimal,
 } from 'drizzle-orm/pg-core';
 
+import type { InferQueryModel } from '../utils/helpers';
 import { charges } from './charges';
 import { exchanges } from './exchanges';
 import { indexes } from './indexes';
 import { investmentOrders } from './investmentOrders';
 
-export type SelectInvestment = typeof investments.$inferSelect;
-export type InsertInvestment = typeof investments.$inferInsert;
+export type Investment = typeof investments.$inferSelect;
+export type NewInvestment = typeof investments.$inferInsert;
 
-export const investmentCurrencyEnum = pgEnum('currency', ['usd', 'usdt']);
-export const investmentFeeStatusEnum = pgEnum('status', [
+export type InvestmentWithOrders = InferQueryModel<
+  'investments',
+  undefined,
+  { orders: true }
+>;
+
+export const InvestmentCurrency = pgEnum('currency', ['usd', 'usdt']);
+export const InvestmentFeeStatus = pgEnum('status', [
   'pending',
   'successful',
   'failed',
@@ -31,9 +38,9 @@ export const investments = pgTable('investments', {
   exchangeId: integer('exchangeId').notNull(),
   indexId: integer('indexId').notNull(),
   amount: decimal('amount', { precision: 15, scale: 2 }).notNull(),
-  currency: investmentCurrencyEnum('currency').notNull(),
+  currency: InvestmentCurrency('currency').notNull(),
   fee: decimal('fee', { precision: 15, scale: 2 }).notNull(),
-  feeStatus: investmentFeeStatusEnum('feeStatus').notNull(),
+  feeStatus: InvestmentFeeStatus('feeStatus').notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
 });

@@ -1,12 +1,11 @@
-import type Decimal from 'decimal.js';
+import { SubscriptionType } from './subscription';
 
-import { SubscriptionType, getIndexFeeTier } from './subscription';
-
-export const calculateIndexFee = (
-  annualRollingTotal: Decimal,
-  newInvestment: Decimal,
-) => newInvestment.mul(getIndexFeeTier(annualRollingTotal));
-
+/**
+ * Example function that returns a greeting for the given name.
+ *
+ * @param nickname - The name to greet.
+ * @returns The greeting.
+ */
 export const parsePlanNickname = (nickname: string): SubscriptionType => {
   if (nickname.toLowerCase() === SubscriptionType.PREMIUM) {
     return SubscriptionType.PREMIUM;

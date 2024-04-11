@@ -13,15 +13,15 @@ import {
 import { exchanges } from './exchanges';
 import { giftNotifications } from './giftNotifications';
 
-export type SelectGift = typeof gifts.$inferSelect;
-export type InsertGift = typeof gifts.$inferInsert;
+export type Gift = typeof gifts.$inferSelect;
+export type NewGift = typeof gifts.$inferInsert;
 
-export const giftRecipientTypeEnum = pgEnum('recipientType', ['email']);
-export const giftRedemptionTypeEnum = pgEnum('redemptionType', [
+export const GiftRecipientType = pgEnum('recipientType', ['email']);
+export const GiftRedemptionType = pgEnum('redemptionType', [
   'wallet',
   'exchange',
 ]);
-export const giftStatusEnum = pgEnum('giftStatusEnum', [
+export const GiftStatus = pgEnum('giftStatusEnum', [
   'new',
   'redeemed',
   'failed',
@@ -36,10 +36,10 @@ export const gifts = pgTable('gifts', {
   amount: decimal('amount', { precision: 15, scale: 2 }).notNull(),
   message: varchar('message', { length: 256 }).notNull(),
   recipient: varchar('recipient', { length: 256 }).notNull(),
-  recipientType: giftRecipientTypeEnum('recipientType').notNull(),
-  redemptionType: giftRedemptionTypeEnum('redemptionType'),
+  recipientType: GiftRecipientType('recipientType').notNull(),
+  redemptionType: GiftRedemptionType('redemptionType'),
   redemptionAddress: char('redemptionAddress', { length: 42 }),
-  status: giftStatusEnum('status').notNull(),
+  status: GiftStatus('status').notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
   redeemedAt: timestamp('redeemedAt'),

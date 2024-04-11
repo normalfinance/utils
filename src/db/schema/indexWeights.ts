@@ -10,8 +10,8 @@ import {
 
 import { indexes } from './indexes';
 
-export type SelectIndexWeight = typeof indexWeights.$inferSelect;
-export type InsertIndexWeight = typeof indexWeights.$inferInsert;
+export type IndexWeight = typeof indexWeights.$inferSelect;
+export type NewIndexWeight = typeof indexWeights.$inferInsert;
 
 export const indexWeights = pgTable('indexWeights', {
   id: serial('id').primaryKey(),

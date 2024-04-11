@@ -12,8 +12,8 @@ import { divestmentOrders } from './divestmentOrders';
 import { exchanges } from './exchanges';
 import { indexes } from './indexes';
 
-export type SelectDivestment = typeof divestments.$inferSelect;
-export type InsertDivestment = typeof divestments.$inferInsert;
+export type Divestment = typeof divestments.$inferSelect;
+export type NewDivestment = typeof divestments.$inferInsert;
 
 export const divestments = pgTable('divestments', {
   id: serial('id').primaryKey(),

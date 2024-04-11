@@ -8,9 +8,8 @@ import {
   decimal,
 } from 'drizzle-orm/pg-core';
 
-export type SelectLendingPositionUpdate =
-  typeof lendingPositionUpdates.$inferSelect;
-export type InsertLendingPositionUpdate =
+export type LendingPositionUpdate = typeof lendingPositionUpdates.$inferSelect;
+export type NewLendingPositionUpdate =
   typeof lendingPositionUpdates.$inferInsert;
 
 export const lendingPositionUpdates = pgTable('lendingPositionUpdates', {

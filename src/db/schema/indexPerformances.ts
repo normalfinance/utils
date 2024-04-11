@@ -10,8 +10,8 @@ import {
 
 import { indexes } from './indexes';
 
-export type SelectIndexPerformance = typeof indexPerformances.$inferSelect;
-export type InsertIndexPerformance = typeof indexPerformances.$inferInsert;
+export type IndexPerformance = typeof indexPerformances.$inferSelect;
+export type NewIndexPerformance = typeof indexPerformances.$inferInsert;
 
 export const indexPerformances = pgTable('indexPerformances', {
   id: serial('id').primaryKey(),

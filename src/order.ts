@@ -1,6 +1,6 @@
 import type Decimal from 'decimal.js';
 
-import type { SelectExchange } from './db/schema/exchanges';
+import type { Exchange } from './db/schema/exchanges';
 
 export enum OrderSide {
   BUY = 'BUY',
@@ -24,7 +24,7 @@ export type OrderSummary = {
 };
 
 export type AbstractOrder = {
-  exchangeId: SelectExchange['id'];
+  exchangeId: Exchange['id'];
   asset: string;
   orderId: string;
   side: string;

@@ -8,8 +8,8 @@ import {
   bigint,
 } from 'drizzle-orm/pg-core';
 
-export type SelectIndexCriteria = typeof indexCriteria.$inferSelect;
-export type InsertIndexCriteria = typeof indexCriteria.$inferInsert;
+export type IndexCriteria = typeof indexCriteria.$inferSelect;
+export type NewIndexCriteria = typeof indexCriteria.$inferInsert;
 
 export const indexCriteria = pgTable('indexCriteria', {
   id: serial('id').primaryKey(),

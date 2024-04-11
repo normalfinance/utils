@@ -14,10 +14,10 @@ import { indexCriteria } from './indexCriteria';
 import { indexPerformances } from './indexPerformances';
 import { indexWeights } from './indexWeights';
 
-export type SelectIndex = typeof indexes.$inferSelect;
-export type InsertIndex = typeof indexes.$inferInsert;
+export type Index = typeof indexes.$inferSelect;
+export type NewIndex = typeof indexes.$inferInsert;
 
-export const indexStategyEnum = pgEnum('strategy', [
+export const IndexStategy = pgEnum('strategy', [
   'constant',
   'custom',
   'weighted_mcap',
@@ -31,7 +31,7 @@ export const indexes = pgTable('indexes', {
   description: varchar('description', { length: 50 }).notNull(),
   privacy: boolean('privacy').default(true).notNull(),
   criteriaId: integer('criteriaId').notNull(),
-  strategy: indexStategyEnum('strategy').notNull(),
+  strategy: IndexStategy('strategy').notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
 });

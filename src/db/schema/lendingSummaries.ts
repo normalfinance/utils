@@ -8,8 +8,8 @@ import {
   decimal,
 } from 'drizzle-orm/pg-core';
 
-export type SelectLendingSummary = typeof lendingSummaries.$inferSelect;
-export type InsertLendingSummary = typeof lendingSummaries.$inferInsert;
+export type LendingSummary = typeof lendingSummaries.$inferSelect;
+export type NewLendingSummary = typeof lendingSummaries.$inferInsert;
 
 export const lendingSummaries = pgTable('lendingSummaries', {
   id: serial('id').primaryKey(),

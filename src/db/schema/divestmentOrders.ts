@@ -10,6 +10,9 @@ import {
 
 import { divestments } from './divestments';
 
+export type DivestmentOrder = typeof divestmentOrders.$inferSelect;
+export type NewDivestmentOrder = typeof divestmentOrders.$inferInsert;
+
 export const divestmentOrders = pgTable('divestmentOrders', {
   id: serial('id').primaryKey(),
   divestmentId: integer('divestmentId').notNull(),

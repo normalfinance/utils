@@ -3,8 +3,8 @@ import { integer, pgTable, serial, timestamp } from 'drizzle-orm/pg-core';
 
 import { gifts } from './gifts';
 
-export type SelectGiftNotification = typeof giftNotifications.$inferSelect;
-export type InsertGiftNotification = typeof giftNotifications.$inferInsert;
+export type GiftNotification = typeof giftNotifications.$inferSelect;
+export type NewGiftNotification = typeof giftNotifications.$inferInsert;
 
 export const giftNotifications = pgTable('giftNotifications', {
   id: serial('id').primaryKey(),

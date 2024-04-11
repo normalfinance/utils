@@ -12,11 +12,11 @@ import {
 
 import { investments } from './investments';
 
-export type SelectCharge = typeof charges.$inferSelect;
-export type InsertCharge = typeof charges.$inferInsert;
+export type Charge = typeof charges.$inferSelect;
+export type NewCharge = typeof charges.$inferInsert;
 
-export const chargeAssetEnum = pgEnum('chargeAsset', ['SOL']);
-export const chargeStatusEnum = pgEnum('chargeStatus', [
+export const ChargeAsset = pgEnum('chargeAsset', ['SOL']);
+export const ChargeStatus = pgEnum('chargeStatus', [
   'new',
   'successful',
   'failed',
@@ -25,14 +25,14 @@ export const chargeStatusEnum = pgEnum('chargeStatus', [
 export const charges = pgTable('charges', {
   id: serial('id').primaryKey(),
   userId: char('userId', { length: 42 }).notNull(),
-  investmentId: integer('investmentId'),
-  asset: chargeAssetEnum('asset'),
+  investmentId: integer('investmentId').notNull(),
+  asset: ChargeAsset('asset').notNull(),
   price: decimal('usdValue', { precision: 5, scale: 2 }).notNull(), // Solana
   amount: decimal('amount', { precision: 13, scale: 10 }).notNull(), // Solana
   exchangeTransferId: varchar('exchangeTransferId', {
     length: 256,
   }).notNull(),
-  status: chargeStatusEnum('status').notNull(),
+  status: ChargeStatus('status').notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
 });

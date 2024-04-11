@@ -1,5 +1,3 @@
-import Decimal from 'decimal.js';
-
 export enum SubscriptionType {
   FREE = 'free',
   PREMIUM = 'premium',
@@ -12,19 +10,6 @@ export enum SubscriptionIndexFeeTierFee {
   Tier3 = 0.002,
   Tier4 = 0.0015,
 }
-
-export const getIndexFeeTier = (annualRollingTotal: Decimal): Decimal => {
-  if (annualRollingTotal.lessThanOrEqualTo(50_000)) {
-    return new Decimal(SubscriptionIndexFeeTierFee.Tier1);
-  }
-  if (annualRollingTotal.lessThanOrEqualTo(500_000)) {
-    return new Decimal(SubscriptionIndexFeeTierFee.Tier2);
-  }
-  if (annualRollingTotal.lessThanOrEqualTo(1_000_000)) {
-    return new Decimal(SubscriptionIndexFeeTierFee.Tier3);
-  }
-  return new Decimal(SubscriptionIndexFeeTierFee.Tier4);
-};
 
 export type SubscriptionLimits = {
   exchangeAccounts: number;

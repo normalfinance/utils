@@ -7,6 +7,9 @@ import {
   date,
 } from 'drizzle-orm/pg-core';
 
+export type Token = typeof tokens.$inferSelect;
+export type NewToken = typeof tokens.$inferInsert;
+
 export const tokens = pgTable('tokens', {
   id: serial('id').primaryKey(),
   date: date('date', { mode: 'string' }).notNull(),
