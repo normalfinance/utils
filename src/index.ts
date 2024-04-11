@@ -1,6 +1,7 @@
+export * from './analytics';
+export * from './api';
 export * from './db';
 export * as schema from './db/schema';
-export * from './analytics';
 export * from './exchange';
 export * from './indexes';
 export * from './indexWeights';

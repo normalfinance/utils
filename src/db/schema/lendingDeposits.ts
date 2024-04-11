@@ -19,7 +19,7 @@ export const lendingDeposits = pgTable('lendingDeposits', {
   amount: decimal('amount', { precision: 15, scale: 2 }).notNull(),
   lendingProductId: integer('lendingProductId').notNull(),
   stripePaymentId: varchar('stripePaymentId', { length: 50 }),
-  stripeFee: decimal('stripeFee', { precision: 15, scale: 2 }).notNull(),
+  stripeFee: decimal('stripeFee', { precision: 15, scale: 2 }),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
 });

@@ -1,6 +1,6 @@
 import type Decimal from 'decimal.js';
 
-import type { Investment } from '../db/schema';
+import type { Exchange, Investment } from '../db/schema';
 import type { AbstractOrder, AssetBalance, OrderSide } from '../order';
 
 export type ExchangeDepositsResponse = {
@@ -32,7 +32,7 @@ export type ExchangePortfolioResponse = {
 };
 
 export type ExchangeOrder = {
-  exchangeId: string;
+  exchangeId: Exchange['id'];
   asset: string;
   currency: Investment['currency'];
   side: OrderSide;

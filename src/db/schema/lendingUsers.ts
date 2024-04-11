@@ -9,6 +9,8 @@ import {
 } from 'drizzle-orm/pg-core';
 
 import { lendingDeposits } from './lendingDeposits';
+import { lendingPositionUpdates } from './lendingPositionUpdates';
+import { lendingSummaries } from './lendingSummaries';
 import { lendingWithdrawals } from './lendingWithdrawal';
 
 export type LendingUser = typeof lendingUsers.$inferSelect;
@@ -27,4 +29,6 @@ export const lendingUsers = pgTable('lendingUsers', {
 export const lendingUsersRelations = relations(lendingUsers, ({ many }) => ({
   deposits: many(lendingDeposits),
   withdrawals: many(lendingWithdrawals),
+  updates: many(lendingPositionUpdates),
+  summaries: many(lendingSummaries),
 }));

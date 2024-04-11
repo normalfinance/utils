@@ -1,3 +1,4 @@
+import { relations } from 'drizzle-orm';
 import {
   integer,
   pgTable,
@@ -6,6 +7,8 @@ import {
   timestamp,
   decimal,
 } from 'drizzle-orm/pg-core';
+
+import { lendingProducts } from './lendingProducts';
 
 export type LendingWithdrawal = typeof lendingWithdrawals.$inferSelect;
 export type NewLendingWithdrawal = typeof lendingWithdrawals.$inferInsert;
@@ -21,3 +24,13 @@ export const lendingWithdrawals = pgTable('lendingWithdrawals', {
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
 });
+
+export const lendingWithdrawalsRelations = relations(
+  lendingWithdrawals,
+  ({ one }) => ({
+    product: one(lendingProducts, {
+      fields: [lendingWithdrawals.lendingProductId],
+      references: [lendingProducts.id],
+    }),
+  }),
+);
