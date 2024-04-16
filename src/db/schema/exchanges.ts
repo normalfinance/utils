@@ -8,11 +8,11 @@ import {
 } from 'drizzle-orm/pg-core';
 
 export type Exchange = typeof exchanges.$inferSelect;
+export type NewExchange = typeof exchanges.$inferInsert;
 export type SanitizedExchange = Omit<
   Exchange,
   'apiKey' | 'apiSecret' | 'apiPass'
 >;
-export type NewExchange = typeof exchanges.$inferInsert;
 
 export const ExchangeType = pgEnum('type', [
   'coinbase',

@@ -9,10 +9,15 @@ import {
   decimal,
 } from 'drizzle-orm/pg-core';
 
+import type { InferResultType } from '../utils/helpers';
 import { lendingProducts } from './lendingProducts';
 
 export type LendingSummary = typeof lendingSummaries.$inferSelect;
 export type NewLendingSummary = typeof lendingSummaries.$inferInsert;
+export type LendingSummaryWithProduct = InferResultType<
+  'lendingSummaries',
+  { product: true }
+>;
 
 export const lendingSummaries = pgTable('lendingSummaries', {
   id: serial('id').primaryKey(),
@@ -22,7 +27,6 @@ export const lendingSummaries = pgTable('lendingSummaries', {
   supply: decimal('supply', { precision: 15, scale: 2 }).notNull(),
   reward: decimal('ferewarde', { precision: 15, scale: 2 }).notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
-  updatedAt: timestamp('updatedAt').defaultNow().notNull(),
 });
 
 export const lendingSummariesRelations = relations(

@@ -8,10 +8,15 @@ import {
   date,
 } from 'drizzle-orm/pg-core';
 
+import type { InferResultType } from '../utils/helpers';
 import { indexes } from './indexes';
 
 export type IndexWeight = typeof indexWeights.$inferSelect;
 export type NewIndexWeight = typeof indexWeights.$inferInsert;
+export type IndexWeightWithIndex = InferResultType<
+  'indexWeights',
+  { index: true }
+>;
 
 export const indexWeights = pgTable('indexWeights', {
   id: serial('id').primaryKey(),

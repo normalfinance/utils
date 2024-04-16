@@ -8,10 +8,29 @@ import {
   decimal,
 } from 'drizzle-orm/pg-core';
 
+import type { InferResultType } from '../utils/helpers';
 import { investments } from './investments';
 
 export type InvestmentOrder = typeof investmentOrders.$inferSelect;
 export type NewInvestmentOrder = typeof investmentOrders.$inferInsert;
+export type InvestmentOrderWithRelations = InferResultType<
+  'investmentOrders',
+  { investment: true }
+>;
+export type InvestmentOrderWithNestedRelations = InferResultType<
+  'investmentOrders',
+  {
+    investment: {
+      with: {
+        exchange: {
+          columns: { apiKey: false; apiSecret: false; apiPass: false };
+        };
+        index: true;
+        orders: true;
+      };
+    };
+  }
+>;
 
 export const investmentOrders = pgTable('investmentOrders', {
   id: serial('id').primaryKey(),

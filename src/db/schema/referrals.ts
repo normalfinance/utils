@@ -1,10 +1,15 @@
 import { relations } from 'drizzle-orm';
 import { integer, pgTable, char, serial, timestamp } from 'drizzle-orm/pg-core';
 
+import type { InferResultType } from '../utils/helpers';
 import { referralCodes } from './referralCodes';
 
 export type Referral = typeof referrals.$inferSelect;
 export type NewReferral = typeof referrals.$inferInsert;
+export type ReferralWithReferredBy = InferResultType<
+  'referrals',
+  { referredBy: true }
+>;
 
 export const referrals = pgTable('referrals', {
   id: serial('id').primaryKey(),

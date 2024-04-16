@@ -8,12 +8,25 @@ import {
   decimal,
 } from 'drizzle-orm/pg-core';
 
+import type { InferResultType } from '../utils/helpers';
 import { divestmentOrders } from './divestmentOrders';
 import { exchanges } from './exchanges';
 import { indexes } from './indexes';
 
 export type Divestment = typeof divestments.$inferSelect;
 export type NewDivestment = typeof divestments.$inferInsert;
+export type DivestmentWithOrders = InferResultType<
+  'divestments',
+  { orders: true }
+>;
+export type DivestmentWithRelations = InferResultType<
+  'divestments',
+  {
+    exchange: { columns: { type: true; nickname: true } };
+    index: { columns: { title: true; description: true } };
+    orders: true;
+  }
+>;
 
 export const divestments = pgTable('divestments', {
   id: serial('id').primaryKey(),

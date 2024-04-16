@@ -15,7 +15,7 @@ const { basename, resolve } = require('path');
  *
  * @type {string}
  */
-const BASE_URL = 'https://github.com/MetaMask/';
+const BASE_URL = 'https://github.com/normalfinance/';
 
 /**
  * Get the name of the workspace. The workspace name is expected to be in the

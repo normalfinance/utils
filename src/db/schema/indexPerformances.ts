@@ -8,10 +8,26 @@ import {
   date,
 } from 'drizzle-orm/pg-core';
 
+import type { InferResultType } from '../utils/helpers';
 import { indexes } from './indexes';
 
 export type IndexPerformance = typeof indexPerformances.$inferSelect;
 export type NewIndexPerformance = typeof indexPerformances.$inferInsert;
+export type IndexPerformanceWithIndex = InferResultType<
+  'indexPerformances',
+  { index: true }
+>;
+
+// export type DateValue = { date: string; value: number };
+
+// export enum HistoricalTimeframe {
+//   oneDay = '1D',
+//   oneWeek = '7D',
+//   oneMonth = '30D',
+//   threeMonths = '90D',
+//   sixMonths = '6M',
+//   oneYear = '1Y',
+// }
 
 export const indexPerformances = pgTable('indexPerformances', {
   id: serial('id').primaryKey(),

@@ -45,7 +45,7 @@ export enum UIEventName {
   ChangedLocale = 'Changed Locale',
   ViewOrdersFromInvestment = 'View Orders from Investment',
 
-  SelectBilling = 'Select Billing Plan',
+  SelectBillingPlan = 'Select Billing Plan',
   SelectManagePlan = 'Select Manage Plan',
   SelectUpgradePlan = 'Select Upgrade Plan',
   // FAILED_PAYMENT_ALERT_VIEW_BILLING = 'Failed Payment Alert - View Billing',
@@ -54,9 +54,8 @@ export enum UIEventName {
   OpenHowToUpdateApiKey = 'Open How to Update API Key',
 
   // OTHER
-  REDIRECTED = 'Redirected',
-  CopyReferralLink = 'Copy Referral Link',
-  CopyAddress = 'Copy Address',
+  Redirected = 'Redirected',
+  Copy = 'Copy',
 
   // UNCATEGORIZED
   IndexFilter = 'Index Filter',
@@ -65,9 +64,9 @@ export enum UIEventName {
   IndexSelectAll = 'Index Select All',
   OpenIndexDetails = 'Open Index Details',
   OpenIndexDetailsInvest = 'Open Index Details Invest',
-  OpenIndexSHARE = 'Open Index Share',
-  OpenIndexDELETE = 'Open Index Delete',
-  OpenCREATEIndex = 'Open Create Index',
+  OpenIndexShare = 'Open Index Share',
+  OpenIndexDelete = 'Open Index Delete',
+  OpenCreateIndex = 'Open Create Index',
   OpenEDITIndex = 'Open Edit Index',
 
   CreateIndex = 'Create Index',
@@ -75,5 +74,4 @@ export enum UIEventName {
   DeleteIndex = 'Delete Index',
   ShareIndexViaSocal = 'Share Index via Social',
   SendIndexEmailInvite = 'Send Index Email Invite',
-  CopyIndexLink = 'Copy Index Link',
 }

@@ -10,7 +10,7 @@ import {
 export type LendingProduct = typeof lendingProducts.$inferSelect;
 export type NewLendingProduct = typeof lendingProducts.$inferInsert;
 
-export const LendingRisk = pgEnum('risk', ['low', 'mediu', 'high']);
+export const LendingRisk = pgEnum('risk', ['low', 'medium', 'high']);
 export const LendingProductChain = pgEnum('chain', ['matic']);
 export const LendingProductProtocol = pgEnum('protocol', [
   'matic_uniswap3',

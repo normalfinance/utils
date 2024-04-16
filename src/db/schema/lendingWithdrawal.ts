@@ -8,10 +8,15 @@ import {
   decimal,
 } from 'drizzle-orm/pg-core';
 
+import type { InferResultType } from '../utils/helpers';
 import { lendingProducts } from './lendingProducts';
 
 export type LendingWithdrawal = typeof lendingWithdrawals.$inferSelect;
 export type NewLendingWithdrawal = typeof lendingWithdrawals.$inferInsert;
+export type LendingWithdrawalWithProduct = InferResultType<
+  'lendingWithdrawals',
+  { product: true }
+>;
 
 export const lendingWithdrawals = pgTable('lendingWithdrawals', {
   id: serial('id').primaryKey(),

@@ -10,11 +10,16 @@ import {
   decimal,
 } from 'drizzle-orm/pg-core';
 
+import type { InferResultType } from '../utils/helpers';
 import { exchanges } from './exchanges';
 import { giftNotifications } from './giftNotifications';
 
 export type Gift = typeof gifts.$inferSelect;
 export type NewGift = typeof gifts.$inferInsert;
+export type GiftWithNotifications = InferResultType<
+  'gifts',
+  { notifications: true }
+>;
 
 export const GiftRecipientType = pgEnum('recipientType', ['email']);
 export const GiftRedemptionType = pgEnum('redemptionType', [

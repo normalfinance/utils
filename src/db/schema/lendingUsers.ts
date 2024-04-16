@@ -8,6 +8,7 @@ import {
   boolean,
 } from 'drizzle-orm/pg-core';
 
+import type { InferResultType } from '../utils/helpers';
 import { lendingDeposits } from './lendingDeposits';
 import { lendingPositionUpdates } from './lendingPositionUpdates';
 import { lendingSummaries } from './lendingSummaries';
@@ -15,6 +16,19 @@ import { lendingWithdrawals } from './lendingWithdrawal';
 
 export type LendingUser = typeof lendingUsers.$inferSelect;
 export type NewLendingUser = typeof lendingUsers.$inferInsert;
+export type LendingUserWithRelations = InferResultType<
+  'lendingUsers',
+  { deposits: true; withdrawals: true; updates: true; summaries: true }
+>;
+export type LendingUserWithNestedRelations = InferResultType<
+  'lendingUsers',
+  {
+    deposits: { with: { product: true } };
+    withdrawals: { with: { product: true } };
+    updates: { with: { product: true } };
+    summaries: { with: { product: true } };
+  }
+>;
 
 export const lendingUsers = pgTable('lendingUsers', {
   id: serial('id').primaryKey(),

@@ -10,12 +10,18 @@ import {
   boolean,
 } from 'drizzle-orm/pg-core';
 
+import type { InferResultType } from '../utils/helpers';
 import { indexCriteria } from './indexCriteria';
 import { indexPerformances } from './indexPerformances';
 import { indexWeights } from './indexWeights';
 
 export type Index = typeof indexes.$inferSelect;
 export type NewIndex = typeof indexes.$inferInsert;
+export type IndexWithRelations = InferResultType<
+  'indexes',
+  { criteria: true; weights: true; performances: true }
+>;
+export type IndexWithWeights = InferResultType<'indexes', { weights: true }>;
 
 export const IndexStategy = pgEnum('strategy', [
   'constant',
