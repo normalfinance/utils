@@ -37,10 +37,10 @@ export const investmentOrders = pgTable('investmentOrders', {
   investmentId: integer('investmentId').notNull(),
   orderId: varchar('orderId', { length: 256 }).notNull(),
   asset: varchar('asset', { length: 6 }).notNull(),
-  price: decimal('price', { precision: 15, scale: 2 }).notNull(),
-  amount: varchar('amount', { length: 256 }).notNull(),
+  price: decimal('price', { precision: 15, scale: 2 }).notNull(), // optional?
+  amount: varchar('amount', { length: 256 }).notNull(), // optional?
   usdValue: decimal('usdValue', { precision: 15, scale: 2 }).notNull(),
-  fee: decimal('fee', { precision: 15, scale: 2 }).notNull(),
+  fee: decimal('fee', { precision: 15, scale: 2 }).notNull(), // optional?
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
 });

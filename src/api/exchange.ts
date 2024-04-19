@@ -3,20 +3,45 @@ import type Decimal from 'decimal.js';
 import type { Exchange, Investment } from '../db/schema';
 import type { AbstractOrder, AssetBalance, OrderSide } from '../order';
 
-export type ExchangeDepositsResponse = {
-  error: any | null;
-  deposits: Record<string, any>[];
-};
+export type ExchangeDeposits =
+  | {
+      error: string;
+      deposits: undefined;
+    }
+  | {
+      error: undefined;
+      deposits: Record<string, any>[];
+    };
 
-export type ExchangeOrdersResponse = {
-  error: any | null;
-  orders: AbstractOrder[];
-};
+export type ExchangeOrders =
+  | {
+      error: string;
+      orders: undefined;
+    }
+  | {
+      error: undefined;
+      orders: AbstractOrder[];
+    };
 
-export type ExchangePaymentMethodsResponse = {
-  error: any | null;
-  paymentMethods: Record<string, any>[];
-};
+export type ExchangePaymentMethods =
+  | {
+      error: string;
+      paymentMethods: undefined;
+    }
+  | {
+      error: undefined;
+      paymentMethods: Record<string, any>[];
+    };
+
+export type ExchangePortfolio =
+  | {
+      error: string;
+      portfolio: undefined;
+    }
+  | {
+      error: undefined;
+      portfolio: PortfolioItem[];
+    };
 
 export type PortfolioItem = AssetBalance & {
   price: Decimal;
@@ -24,11 +49,6 @@ export type PortfolioItem = AssetBalance & {
   oneDayChange: Decimal;
   oneWeekChange: Decimal;
   allocation: Decimal;
-};
-
-export type ExchangePortfolioResponse = {
-  error: any | null;
-  portfolio: PortfolioItem[];
 };
 
 export type ExchangeOrder = {

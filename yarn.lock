@@ -1140,6 +1140,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^5.43.0"
     "@typescript-eslint/parser": "npm:^5.43.0"
     "@yarnpkg/types": "npm:^4.0.0-rc.52"
+    customerio-node: "npm:^4.1.1"
     decimal.js: "npm:^10.4.3"
     depcheck: "npm:^1.4.3"
     drizzle-orm: "npm:^0.30.7"
@@ -2416,6 +2417,13 @@ __metadata:
     shebang-command: "npm:^2.0.0"
     which: "npm:^2.0.1"
   checksum: 10/e1a13869d2f57d974de0d9ef7acbf69dc6937db20b918525a01dacb5032129bd552d290d886d981e99f1b624cb03657084cc87bd40f115c07ecf376821c729ce
+  languageName: node
+  linkType: hard
+
+"customerio-node@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "customerio-node@npm:4.1.1"
+  checksum: 10/90f31c0ddf8b7b15a1e4cd3863d2bad587d7a862effb5c755535afe5b95bbe776c6b04ce48577b3aeebd982d3a098a9f3fffd2b887be4e2461cc62f3474e83fd
   languageName: node
   linkType: hard
 

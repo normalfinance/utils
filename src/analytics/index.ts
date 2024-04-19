@@ -1,4 +1,5 @@
 export * from './charge';
+export * from './customerio';
 export * from './exchange';
 export * from './gift';
 export * from './indexes';
