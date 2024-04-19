@@ -11,6 +11,7 @@ import {
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../utils/helpers';
+import { lenders } from './lender';
 import { lendingProducts } from './lendingProducts';
 
 export type LendingPositionUpdate = typeof lendingPositionUpdates.$inferSelect;
@@ -38,8 +39,8 @@ export const LendingPositionUpdateType = pgEnum('type', [
 
 export const lendingPositionUpdates = pgTable('lendingPositionUpdates', {
   id: serial('id').primaryKey(),
-  userId: char('userId', { length: 42 }).notNull(),
-  lendingProductId: integer('lendingProductId').notNull(),
+  lenderId: integer('lenderId').notNull(),
+  productId: integer('productId').notNull(),
   positionId: varchar('positionId', { length: 30 }),
   type: LendingPositionUpdateType('type').notNull(),
   trxHash: char('trxHash', { length: 42 }),
@@ -51,8 +52,12 @@ export const lendingPositionUpdates = pgTable('lendingPositionUpdates', {
 export const lendingPositionUpdatesRelations = relations(
   lendingPositionUpdates,
   ({ one }) => ({
+    lender: one(lenders, {
+      fields: [lendingPositionUpdates.lenderId],
+      references: [lenders.id],
+    }),
     product: one(lendingProducts, {
-      fields: [lendingPositionUpdates.lendingProductId],
+      fields: [lendingPositionUpdates.productId],
       references: [lendingProducts.id],
     }),
   }),

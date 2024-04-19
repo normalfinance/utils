@@ -2,5 +2,5 @@
  * Lending specific events.
  */
 export enum LendingEventName {
-  LendingDepositConfirmed = 'Lending Deposit Confirmed',
+  LendingDepositCreated = 'Lending Deposit Created',
 }

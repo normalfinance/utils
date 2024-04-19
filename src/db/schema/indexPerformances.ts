@@ -18,17 +18,6 @@ export type IndexPerformanceWithIndex = InferResultType<
   { index: true }
 >;
 
-// export type DateValue = { date: string; value: number };
-
-// export enum HistoricalTimeframe {
-//   oneDay = '1D',
-//   oneWeek = '7D',
-//   oneMonth = '30D',
-//   threeMonths = '90D',
-//   sixMonths = '6M',
-//   oneYear = '1Y',
-// }
-
 export const indexPerformances = pgTable('indexPerformances', {
   id: serial('id').primaryKey(),
   indexId: integer('indexId').notNull(),

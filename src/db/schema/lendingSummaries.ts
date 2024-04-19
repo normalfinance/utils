@@ -3,13 +3,13 @@ import {
   integer,
   pgTable,
   varchar,
-  char,
   serial,
   timestamp,
   decimal,
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../utils/helpers';
+import { lenders } from './lender';
 import { lendingProducts } from './lendingProducts';
 
 export type LendingSummary = typeof lendingSummaries.$inferSelect;
@@ -21,8 +21,8 @@ export type LendingSummaryWithProduct = InferResultType<
 
 export const lendingSummaries = pgTable('lendingSummaries', {
   id: serial('id').primaryKey(),
-  userId: char('userId', { length: 42 }).notNull(),
-  lendingProductId: integer('lendingProductId').notNull(),
+  lenderId: integer('lenderId').notNull(),
+  productId: integer('productId').notNull(),
   positionId: varchar('positionId', { length: 30 }).notNull(),
   supply: decimal('supply', { precision: 15, scale: 2 }).notNull(),
   reward: decimal('ferewarde', { precision: 15, scale: 2 }).notNull(),
@@ -32,8 +32,12 @@ export const lendingSummaries = pgTable('lendingSummaries', {
 export const lendingSummariesRelations = relations(
   lendingSummaries,
   ({ one }) => ({
+    lender: one(lenders, {
+      fields: [lendingSummaries.lenderId],
+      references: [lenders.id],
+    }),
     product: one(lendingProducts, {
-      fields: [lendingSummaries.lendingProductId],
+      fields: [lendingSummaries.productId],
       references: [lendingProducts.id],
     }),
   }),

@@ -1,4 +1,4 @@
-export * from './billing';
+export * from './charge';
 export * from './exchange';
 export * from './gift';
 export * from './indexes';

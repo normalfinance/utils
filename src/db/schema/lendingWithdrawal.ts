@@ -9,6 +9,7 @@ import {
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../utils/helpers';
+import { lenders } from './lender';
 import { lendingProducts } from './lendingProducts';
 
 export type LendingWithdrawal = typeof lendingWithdrawals.$inferSelect;
@@ -20,9 +21,9 @@ export type LendingWithdrawalWithProduct = InferResultType<
 
 export const lendingWithdrawals = pgTable('lendingWithdrawals', {
   id: serial('id').primaryKey(),
-  lendingUserId: integer('lendingUserId').notNull(),
+  lenderId: integer('lenderId').notNull(),
   amount: decimal('amount', { precision: 15, scale: 2 }).notNull(),
-  lendingProductId: integer('lendingProductId').notNull(),
+  productId: integer('productId').notNull(),
   via: varchar('via', { length: 50 }).notNull(),
   viaId: varchar('viaId', { length: 256 }).notNull(),
   commission: decimal('commission', { precision: 15, scale: 2 }).notNull(),
@@ -33,8 +34,12 @@ export const lendingWithdrawals = pgTable('lendingWithdrawals', {
 export const lendingWithdrawalsRelations = relations(
   lendingWithdrawals,
   ({ one }) => ({
+    lender: one(lenders, {
+      fields: [lendingWithdrawals.lenderId],
+      references: [lenders.id],
+    }),
     product: one(lendingProducts, {
-      fields: [lendingWithdrawals.lendingProductId],
+      fields: [lendingWithdrawals.productId],
       references: [lendingProducts.id],
     }),
   }),

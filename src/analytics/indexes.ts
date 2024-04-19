@@ -2,15 +2,19 @@
  * Index specific events.
  */
 export enum IndexEventName {
-  IndexInvestConfirmed = 'Index Invest Confirmed', // Received investment request
-  IndexInvestFulfilled = 'Index Invest Fulfilled', // All orders executed
-  IndexInvestFailed = 'Index Invest Failed', // 100% of the orders failed or the investment failed for some other reason
+  IndexInvestmentCreated = 'Index Investment Created',
+  IndexInvestmentSucceeded = 'Index Investment Succeeded',
+  IndexInvestmentEnrichSucceeded = 'Index Investment Enrich Succeeded',
+  IndexInvestmentEnrichFailed = 'Index Investment Enrich Failed',
+  IndexInvestmentFailed = 'Index Investment Failed',
 
-  IndexDivestConfirmed = 'Index Divest Confirmed',
-  IndexDivestFulfilled = 'Index Divest Fulfilled',
-  IndexDivestFailed = 'Index Divest Failed',
+  IndexDivestmentCreated = 'Index Divestment Created',
+  IndexDivestmentSucceeded = 'Index Divestment Succeeded',
+  IndexDivestmentEnrichSucceeded = 'Index Divestment Enrich Succeeded',
+  IndexDivestmentEnrichFailed = 'Index Divestment Enrich Failed',
+  IndexDivestmentFailed = 'Index Divestment Failed',
 
-  IndexCreateConfirmed = 'Index Create Confirmed',
-  IndexUpdateConfirmed = 'Index Update Confirmed',
-  IndexDeleteConfirmed = 'Index Delete Confirmed',
+  IndexCreated = 'Index Created',
+  IndexUpdated = 'Index Updated',
+  IndexDeleted = 'Index Deleted',
 }

@@ -2,10 +2,11 @@
  * Exchange specific events.
  */
 export enum ExchangeEventName {
-  ExchangeConnectConfirmed = 'Exchange Connect Confirmed',
-  ExchangeDepositConfirmed = 'Exchange Deposit Confirmed',
-  ExchangeDisconnectConfirmed = 'Exchange Disconnect Confirmed',
-  ExchangeOrderConfirmed = 'Exchange Order Confirmed',
+  ExchangeConnected = 'Exchange Connected',
+  ExchangeDisconnected = 'Exchange Disconnected',
+
+  ExchangeDepositCreated = 'Exchange Deposit Created',
+  ExchangeOrderCreated = 'Exchange Order Created',
   ExchangeTransactionCreated = 'Exchange Transaction Created',
   ExchangeAddressCreated = 'Exchange Address Created',
 }

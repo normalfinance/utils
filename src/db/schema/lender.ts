@@ -14,14 +14,14 @@ import { lendingPositionUpdates } from './lendingPositionUpdates';
 import { lendingSummaries } from './lendingSummaries';
 import { lendingWithdrawals } from './lendingWithdrawal';
 
-export type LendingUser = typeof lendingUsers.$inferSelect;
-export type NewLendingUser = typeof lendingUsers.$inferInsert;
-export type LendingUserWithRelations = InferResultType<
-  'lendingUsers',
+export type Lender = typeof lenders.$inferSelect;
+export type NewLender = typeof lenders.$inferInsert;
+export type LenderWithRelations = InferResultType<
+  'lenders',
   { deposits: true; withdrawals: true; updates: true; summaries: true }
 >;
-export type LendingUserWithNestedRelations = InferResultType<
-  'lendingUsers',
+export type LenderWithNestedRelations = InferResultType<
+  'lenders',
   {
     deposits: { with: { product: true } };
     withdrawals: { with: { product: true } };
@@ -30,7 +30,7 @@ export type LendingUserWithNestedRelations = InferResultType<
   }
 >;
 
-export const lendingUsers = pgTable('lendingUsers', {
+export const lenders = pgTable('lenders', {
   id: serial('id').primaryKey(),
   userId: char('userId', { length: 42 }).notNull(),
   manager: char('manager', { length: 42 }).notNull(),
@@ -40,7 +40,7 @@ export const lendingUsers = pgTable('lendingUsers', {
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
 });
 
-export const lendingUsersRelations = relations(lendingUsers, ({ many }) => ({
+export const lendersRelations = relations(lenders, ({ many }) => ({
   deposits: many(lendingDeposits),
   withdrawals: many(lendingWithdrawals),
   updates: many(lendingPositionUpdates),

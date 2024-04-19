@@ -22,6 +22,7 @@ export type IndexWithRelations = InferResultType<
   { criteria: true; weights: true; performances: true }
 >;
 export type IndexWithWeights = InferResultType<'indexes', { weights: true }>;
+export type IndexWithCriteria = InferResultType<'indexes', { criteria: true }>;
 
 export const IndexStategy = pgEnum('strategy', [
   'constant',

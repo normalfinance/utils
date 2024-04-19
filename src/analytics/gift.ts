@@ -2,9 +2,9 @@
  * Gift specific events.
  */
 export enum GiftEventName {
-  GiftCreateConfirmed = 'Gift Create Confirmed',
+  GiftCreated = 'Gift Created',
 
-  GiftRedeemConfirmed = 'Gift Redeem Confirmed',
-  GiftRedeemFulfilled = 'Gift Redeem Fulfilled',
-  GiftRedeemFailed = 'Gift Redeem Failed',
+  GiftRedemptionCreated = 'Gift Redemption Created',
+  GiftRedemptionSucceeded = 'Gift Redemption Succeeded',
+  GiftRedemptionFailed = 'Gift Redemption Failed',
 }
