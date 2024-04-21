@@ -1,7 +1,7 @@
-import { STABLECOINS } from './exchange';
+import { STABLECOINS } from '.';
 
 describe('Test', () => {
-  it('sTABLECOINS', () => {
+  it('stablecoins', () => {
     expect(STABLECOINS).toHaveLength(10);
   });
 });

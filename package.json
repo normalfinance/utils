@@ -1,7 +1,7 @@
 {
   "name": "@normalfinance/utils",
-  "version": "0.0.11",
-  "description": "Normal utils",
+  "version": "0.0.14",
+  "description": "A Typescript modules for frequently used types, utilities, constants, and more across Normal repositories.",
   "homepage": "https://github.com/normalfinance/utils#readme",
   "bugs": {
     "url": "https://github.com/normalfinance/utils/issues"
@@ -10,6 +10,14 @@
     "type": "git",
     "url": "https://github.com/normalfinance/utils.git"
   },
+  "license": "UNLICENSED",
+  "contributors": [
+    {
+      "name": "Joshua blew",
+      "email": "joshua@normalfinance.io",
+      "url": "https://github.com/jblewnormal"
+    }
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
@@ -40,6 +48,10 @@
     "test": "jest && jest-it-up",
     "test:watch": "jest --watch"
   },
+  "dependencies": {
+    "customerio-node": "^4.1.1",
+    "drizzle-orm": "^0.30.7"
+  },
   "devDependencies": {
     "@lavamoat/allow-scripts": "^3.0.0",
     "@lavamoat/preinstall-always-fail": "^2.0.0",
@@ -55,6 +67,7 @@
     "@yarnpkg/types": "^4.0.0-rc.52",
     "decimal.js": "^10.4.3",
     "depcheck": "^1.4.3",
+    "drizzle-kit": "^0.20.15",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "~2.26.0",
@@ -86,9 +99,5 @@
       "@lavamoat/preinstall-always-fail": false,
       "tsup>esbuild": true
     }
-  },
-  "dependencies": {
-    "customerio-node": "^4.1.1",
-    "drizzle-orm": "^0.30.7"
   }
 }
