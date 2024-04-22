@@ -40,12 +40,12 @@ export const investments = pgTable('investments', {
   exchangeId: integer('exchangeId').notNull(),
   indexId: integer('indexId').notNull(),
   amount: decimal('amount', { precision: 15, scale: 2 }).notNull(),
-  currency: InvestmentCurrency('InvestmentCurrency').notNull(),
+  currency: InvestmentCurrency('currency').notNull(),
   fee: decimal('fee', { precision: 15, scale: 2 }),
   feeTransferId: varchar('feeTransferId', {
     length: 256,
   }),
-  feeStatus: InvestmentFeeStatus('InvestmentFeeStatus').notNull(),
+  feeStatus: InvestmentFeeStatus('feeStatus').notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
 });

@@ -21,11 +21,11 @@ export const lendingProducts = pgTable('lendingProducts', {
   id: serial('id').primaryKey(),
   name: varchar('name', { length: 50 }).notNull(),
   description: varchar('description', { length: 256 }).notNull(),
-  risk: LendingRisk('LendingRisk').notNull(),
+  risk: LendingRisk('risk').notNull(),
   projectedAPY: decimal('projectedAPY', { precision: 7, scale: 4 }).notNull(),
-  chain: LendingProductChain('LendingProductChain').notNull(),
-  protocol: LendingProductProtocol('LendingProductProtocol').notNull(),
-  assets: varchar('assets', { length: 256 }), // BTC, ETH
+  chain: LendingProductChain('chain').notNull(),
+  protocol: LendingProductProtocol('protocol').notNull(),
+  assets: varchar('assets', { length: 256 }).notNull(), // BTC, ETH
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
 });

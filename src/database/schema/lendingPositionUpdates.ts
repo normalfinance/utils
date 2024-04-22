@@ -42,7 +42,7 @@ export const lendingPositionUpdates = pgTable('lendingPositionUpdates', {
   lenderId: integer('lenderId').notNull(),
   productId: integer('productId').notNull(),
   positionId: varchar('positionId', { length: 30 }),
-  type: LendingPositionUpdateType('LendingPositionUpdateType').notNull(),
+  type: LendingPositionUpdateType('type').notNull(),
   trxHash: char('trxHash', { length: 42 }),
   fee: decimal('fee', { precision: 15, scale: 2 }),
   createdAt: timestamp('createdAt').defaultNow().notNull(),

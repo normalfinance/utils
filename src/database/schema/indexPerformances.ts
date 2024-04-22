@@ -23,7 +23,7 @@ export const indexPerformances = pgTable('indexPerformances', {
   indexId: integer('indexId').notNull(),
   timeframe: integer('timeframe').notNull(),
   date: date('date').notNull(),
-  value: decimal('weight', { precision: 9, scale: 6 }).notNull(),
+  value: decimal('value', { precision: 9, scale: 6 }).notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
 });
 

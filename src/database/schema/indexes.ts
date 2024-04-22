@@ -38,7 +38,7 @@ export const indexes = pgTable('indexes', {
   description: varchar('description', { length: 50 }).notNull(),
   privacy: boolean('privacy').default(true).notNull(),
   criteriaId: integer('criteriaId').notNull(),
-  strategy: IndexStategy('IndexStategy').notNull(),
+  strategy: IndexStategy('stategy').notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
 });

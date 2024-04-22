@@ -25,7 +25,7 @@ export const lendingSummaries = pgTable('lendingSummaries', {
   productId: integer('productId').notNull(),
   positionId: varchar('positionId', { length: 30 }).notNull(),
   supply: decimal('supply', { precision: 15, scale: 2 }).notNull(),
-  reward: decimal('ferewarde', { precision: 15, scale: 2 }).notNull(),
+  reward: decimal('reward', { precision: 15, scale: 2 }).notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
 });
 
