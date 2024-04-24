@@ -18,8 +18,6 @@ export const tokens = pgTable(
     date: date('date', { mode: 'date' }).notNull(),
     price: varchar('price').notNull(),
     marketCap: varchar('marketCap').notNull(),
-    volume24h: varchar('volume24h').notNull(),
-    volumeChange24h: varchar('volumeChange24h').notNull(),
     percentChange1h: varchar('percentChange1h').notNull(),
     percentChange24h: varchar('percentChange24h').notNull(),
     percentChange7d: varchar('percentChange7d').notNull(),
