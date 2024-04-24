@@ -1,39 +1,62 @@
-import type Decimal from 'decimal.js';
+// Base units
+export type ExchangeBalance = {
+  asset: string;
+  amount: string;
+};
+export type PortfolioItem = ExchangeBalance & {
+  price: string;
+  usdValue: string;
+  oneDayChange: string;
+  oneWeekChange: string;
+  allocation: string;
+};
+export type ExchangeDeposit = Record<string, any>;
+export type ExchangePaymentMethod = Record<string, any>;
+export type ExchangeOrder = {
+  asset: string;
+  orderId: string;
+  side: string;
+  amount: string;
+  usdValue: string;
+  price: string;
+  fee: string;
+  status: string;
+  updatedAt: string;
+  createdAt: string;
+};
 
-import type { Exchange, Investment } from '../database/schema';
-import type { AbstractOrder, AssetBalance, OrderSide } from './order';
-
-export type ExchangeDeposits =
+// Responses
+export type GetExchangeDepositsResponse =
   | {
       error: string;
       deposits: undefined;
     }
   | {
       error: undefined;
-      deposits: Record<string, any>[];
+      deposits: ExchangeDeposit[];
     };
 
-export type ExchangeOrders =
+export type GetExchangeOrdersResponse =
   | {
       error: string;
       orders: undefined;
     }
   | {
       error: undefined;
-      orders: AbstractOrder[];
+      orders: ExchangeOrder[];
     };
 
-export type ExchangePaymentMethods =
+export type GetExchangePaymentMethodsResponse =
   | {
       error: string;
       paymentMethods: undefined;
     }
   | {
       error: undefined;
-      paymentMethods: Record<string, any>[];
+      paymentMethods: ExchangePaymentMethod[];
     };
 
-export type ExchangePortfolio =
+export type GetExchangePortfolioResponse =
   | {
       error: string;
       portfolio: undefined;
@@ -42,19 +65,3 @@ export type ExchangePortfolio =
       error: undefined;
       portfolio: PortfolioItem[];
     };
-
-export type PortfolioItem = AssetBalance & {
-  price: Decimal;
-  usdValue: Decimal;
-  oneDayChange: Decimal;
-  oneWeekChange: Decimal;
-  allocation: Decimal;
-};
-
-export type ExchangeOrder = {
-  exchangeId: Exchange['id'];
-  asset: string;
-  currency: Investment['currency'];
-  side: OrderSide;
-  amount: Decimal;
-};

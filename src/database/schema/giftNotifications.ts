@@ -14,6 +14,7 @@ export type GiftNotificationWithGift = InferResultType<
 export const giftNotifications = pgTable('giftNotifications', {
   id: serial('id').primaryKey(),
   giftId: integer('giftId').notNull(),
+  // ...
   createdAt: timestamp('createdAt').defaultNow().notNull(),
 });
 

@@ -22,7 +22,7 @@ export const indexPerformances = pgTable('indexPerformances', {
   id: serial('id').primaryKey(),
   indexId: integer('indexId').notNull(),
   timeframe: integer('timeframe').notNull(),
-  date: date('date').notNull(),
+  date: date('date', { mode: 'date' }).notNull(),
   value: decimal('value', { precision: 9, scale: 6 }).notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
 });

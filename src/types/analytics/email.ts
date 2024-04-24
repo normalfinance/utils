@@ -25,6 +25,7 @@ export enum TransactionalEmailTemplateId {
   // Billing
   BillingChargeSucceeded = 'billing_charge_succeeded',
   BillingChargeFailed = 'billing_charge_failed',
+  BillingChargeFailedRequires2fa = 'billing_charge_failed_requires_2fa',
 
   // Gift
   GiftCreated = 'gift_created',
@@ -97,6 +98,9 @@ export type TransactionalEmailArgs = {
     address: string;
   };
   [TransactionalEmailTemplateId.BillingChargeFailed]: {
+    amount: string;
+  };
+  [TransactionalEmailTemplateId.BillingChargeFailedRequires2fa]: {
     amount: string;
   };
 

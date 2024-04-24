@@ -4,7 +4,6 @@ import {
   pgEnum,
   pgTable,
   varchar,
-  char,
   serial,
   timestamp,
   boolean,
@@ -33,7 +32,7 @@ export const IndexStategy = pgEnum('IndexStategy', [
 
 export const indexes = pgTable('indexes', {
   id: serial('id').primaryKey(),
-  userId: char('userId', { length: 42 }).notNull(),
+  userId: varchar('userId', { length: 42 }).notNull(),
   title: varchar('title', { length: 50 }).notNull(),
   description: varchar('description', { length: 50 }).notNull(),
   privacy: boolean('privacy').default(true).notNull(),

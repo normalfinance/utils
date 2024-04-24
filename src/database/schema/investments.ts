@@ -26,26 +26,30 @@ export type InvestmentWithRelations = InferResultType<
   }
 >;
 
-export const InvestmentCurrency = pgEnum('InvestmentCurrency', ['usd', 'usdt']);
-export const InvestmentFeeStatus = pgEnum('InvestmentFeeStatus', [
-  'pending',
-  'successful',
+export const InvestmentCurrency = pgEnum('InvestmentCurrency', ['USD', 'USDT']);
+export const InvestmentStatus = pgEnum('InvestmentStatus', [
+  'new',
+  'processing',
   'failed',
+  'requires_2fa',
+  'failed_charge',
+  'successful',
 ]);
 
 export const investments = pgTable('investments', {
   id: serial('id').primaryKey(),
   idempotencyKey: char('idempotencyKey', { length: 256 }).notNull(),
-  userId: char('userId', { length: 42 }).notNull(),
+  userId: varchar('userId', { length: 42 }).notNull(),
   exchangeId: integer('exchangeId').notNull(),
   indexId: integer('indexId').notNull(),
   amount: decimal('amount', { precision: 15, scale: 2 }).notNull(),
   currency: InvestmentCurrency('currency').notNull(),
   fee: decimal('fee', { precision: 15, scale: 2 }),
+  feeTransferAmount: decimal('feeTransferAmount', { precision: 10, scale: 5 }),
   feeTransferId: varchar('feeTransferId', {
     length: 256,
   }),
-  feeStatus: InvestmentFeeStatus('feeStatus').notNull(),
+  status: InvestmentStatus('status').notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
 });

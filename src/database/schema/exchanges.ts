@@ -2,7 +2,6 @@ import {
   pgEnum,
   pgTable,
   varchar,
-  char,
   serial,
   timestamp,
 } from 'drizzle-orm/pg-core';
@@ -25,7 +24,7 @@ export const ExchangeVersion = pgEnum('ExchangeVersion', ['v1', 'v2']);
 
 export const exchanges = pgTable('exchanges', {
   id: serial('id').primaryKey(),
-  userId: char('userId', { length: 42 }).notNull(),
+  userId: varchar('userId', { length: 42 }).notNull(),
   type: ExchangeType('type').notNull(),
   nickname: varchar('nickname', { length: 50 }).notNull(),
   apiKey: varchar('apiKey', { length: 400 }).notNull(),

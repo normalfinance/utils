@@ -19,7 +19,7 @@ const BASE_URL = 'https://github.com/normalfinance/';
 
 /**
  * Get the name of the workspace. The workspace name is expected to be in the
- * form `@metamask/workspace-name`, and this function will extract
+ * form `@normalfinance/workspace-name`, and this function will extract
  * `workspace-name`.
  *
  * @param {Workspace} workspace - The workspace.
@@ -140,7 +140,7 @@ function expectWorkspaceDependencies(workspace) {
 async function expectReadme(workspace, workspaceName) {
   const readme = await getWorkspaceFile(workspace, 'README.md');
   if (
-    workspaceName !== 'metamask-module-template' &&
+    workspaceName !== 'utils' &&
     readme.includes('## Template Instructions')
   ) {
     workspace.error(
@@ -148,15 +148,15 @@ async function expectReadme(workspace, workspaceName) {
     );
   }
 
-  if (!readme.includes(`yarn add @metamask/${workspaceName}`)) {
+  if (!readme.includes(`yarn add @normalfinance/${workspaceName}`)) {
     workspace.error(
-      `The README.md does not contain an example of how to install the package using Yarn (\`yarn add @metamask/${workspaceName}\`). Please add an example.`,
+      `The README.md does not contain an example of how to install the package using Yarn (\`yarn add @normalfinance/${workspaceName}\`). Please add an example.`,
     );
   }
 
-  if (!readme.includes(`npm install @metamask/${workspaceName}`)) {
+  if (!readme.includes(`npm install @normalfinance/${workspaceName}`)) {
     workspace.error(
-      `The README.md does not contain an example of how to install the package using npm (\`npm install @metamask/${workspaceName}\`). Please add an example.`,
+      `The README.md does not contain an example of how to install the package using npm (\`npm install @normalfinance/${workspaceName}\`). Please add an example.`,
     );
   }
 }
@@ -173,7 +173,7 @@ async function expectReadme(workspace, workspaceName) {
  * @returns {Promise<void>}
  */
 async function expectPullRequestTemplate(workspace, workspaceName) {
-  if (workspaceName === 'metamask-module-template') {
+  if (workspaceName === 'utils') {
     return;
   }
 
@@ -228,7 +228,7 @@ module.exports = defineConfig({
     const workspaceRepository = `${BASE_URL}${workspaceName}`;
 
     // The package must have a name, version, description, and license.
-    expectWorkspaceField(workspace, 'name', `@metamask/${workspaceName}`);
+    expectWorkspaceField(workspace, 'name', `@normalfinance/${workspaceName}`);
     expectWorkspaceField(workspace, 'version');
     expectWorkspaceField(workspace, 'license');
     expectWorkspaceDescription(workspace);
@@ -249,7 +249,7 @@ module.exports = defineConfig({
     workspace.set('bugs.url', `${workspaceRepository}/issues`);
 
     // The package must specify Git as the repository type, and match the URL of
-    // a repository within the MetaMask organization.
+    // a repository within the Normal Finance organization.
     workspace.set('repository.type', 'git');
     workspace.set('repository.url', `${workspaceRepository}.git`);
 

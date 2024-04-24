@@ -6,6 +6,8 @@ import {
   serial,
   timestamp,
   decimal,
+  pgEnum,
+  varchar,
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../../types/database/helpers';
@@ -28,13 +30,21 @@ export type DivestmentWithRelations = InferResultType<
   }
 >;
 
+export const DivestmentStatus = pgEnum('DivestmentStatus', [
+  'new',
+  'processing',
+  'failed',
+  'successful',
+]);
+
 export const divestments = pgTable('divestments', {
   id: serial('id').primaryKey(),
   idempotencyKey: char('idempotencyKey', { length: 256 }).notNull(),
-  userId: char('userId', { length: 42 }).notNull(),
+  userId: varchar('userId', { length: 42 }).notNull(),
   exchangeId: integer('exchangeId').notNull(),
   indexId: integer('indexId').notNull(),
   portion: decimal('portion', { precision: 3, scale: 2 }).notNull(),
+  status: DivestmentStatus('status').notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
 });
