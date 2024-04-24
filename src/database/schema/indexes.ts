@@ -34,7 +34,7 @@ export const indexes = pgTable('indexes', {
   id: serial('id').primaryKey(),
   userId: varchar('userId', { length: 42 }).notNull(),
   title: varchar('title', { length: 50 }).notNull(),
-  description: varchar('description', { length: 50 }).notNull(),
+  description: varchar('description', { length: 100 }).notNull(),
   privacy: boolean('privacy').default(true).notNull(),
   criteriaId: integer('criteriaId').notNull(),
   strategy: IndexStategy('stategy').notNull(),
