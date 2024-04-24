@@ -14,7 +14,7 @@ export const tokens = pgTable(
   'tokens',
   {
     id: serial('id').primaryKey(),
-    asset: varchar('asset').notNull(),
+    asset: varchar('asset', { length: 10 }).notNull(),
     date: date('date', { mode: 'date' }).notNull(),
     price: varchar('price').notNull(),
     marketCap: varchar('marketCap').notNull(),

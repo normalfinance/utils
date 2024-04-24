@@ -33,7 +33,7 @@ export const gifts = pgTable('gifts', {
   idempotencyKey: char('idempotencyKey', { length: 256 }).notNull(),
   userId: varchar('userId', { length: 42 }).notNull(),
   exchangeId: integer('exchangeId').notNull(),
-  asset: varchar('asset', { length: 6 }).notNull(),
+  asset: varchar('asset', { length: 10 }).notNull(),
   amount: decimal('amount', { precision: 15, scale: 2 }).notNull(),
   message: varchar('message', { length: 256 }).notNull(),
   recipient: varchar('recipient', { length: 256 }).notNull(),

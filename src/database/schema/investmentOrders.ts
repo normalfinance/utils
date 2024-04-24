@@ -35,7 +35,7 @@ export const investmentOrders = pgTable('investmentOrders', {
   id: serial('id').primaryKey(),
   investmentId: integer('investmentId').notNull(),
   orderId: varchar('orderId', { length: 256 }).notNull(),
-  asset: varchar('asset', { length: 6 }).notNull(),
+  asset: varchar('asset', { length: 10 }).notNull(),
   price: varchar('price', { length: 40 }).notNull(),
   amount: varchar('amount', { length: 40 }).notNull(),
   usdValue: varchar('usdValue', { length: 40 }).notNull(),

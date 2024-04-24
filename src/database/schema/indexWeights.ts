@@ -21,7 +21,7 @@ export type IndexWeightWithIndex = InferResultType<
 export const indexWeights = pgTable('indexWeights', {
   id: serial('id').primaryKey(),
   indexId: integer('indexId').notNull(),
-  asset: varchar('asset', { length: 6 }).notNull(),
+  asset: varchar('asset', { length: 10 }).notNull(),
   weight: decimal('weight', { precision: 5, scale: 4 }).notNull(),
   createdOn: date('createdOn', { mode: 'string' }).notNull(),
 });

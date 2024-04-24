@@ -36,7 +36,7 @@ export const divestmentOrders = pgTable('divestmentOrders', {
   id: serial('id').primaryKey(),
   divestmentId: integer('divestmentId').notNull(),
   orderId: varchar('orderId', { length: 256 }).notNull(),
-  asset: varchar('asset', { length: 6 }).notNull(),
+  asset: varchar('asset', { length: 10 }).notNull(),
   price: decimal('price', { precision: 15, scale: 2 }).notNull(),
   amount: varchar('amount', { length: 256 }).notNull(),
   usdValue: decimal('usdValue', { precision: 15, scale: 2 }).notNull(),
