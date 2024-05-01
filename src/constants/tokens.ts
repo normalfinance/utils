@@ -9,6 +9,12 @@ export const STABLECOINS = [
   'USDP',
   'PYUSD',
   'FRAX',
+  'USDE',
+  'USDJ',
+  'USDB',
+  'EURS',
+  'CRVUSD',
+  'EURC',
 ];
 
 export const TOKEN_BLACKLIST = [
@@ -25,4 +31,10 @@ export const TOKEN_BLACKLIST = [
   '1000SATS',
   'ETHDYDX',
   'LUNC',
+  'CBETH',
+  'VBNB',
+  'WEETH',
+  'WBNB',
+  'USTC',
+  'EZETH',
 ];

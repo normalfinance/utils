@@ -1,5 +1,5 @@
 import { relations } from 'drizzle-orm';
-import { pgTable, varchar, serial, timestamp } from 'drizzle-orm/pg-core';
+import { pgTable, varchar, serial, timestamp, uuid } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../../types/database/helpers';
 import { referrals } from './referrals';
@@ -13,7 +13,8 @@ export type ReferralCodeWithReferrals = InferResultType<
 
 export const referralCodes = pgTable('referralCodes', {
   id: serial('id').primaryKey(),
-  userId: varchar('userId', { length: 42 }).notNull(),
+  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
+  userId: uuid('userId'),
   code: varchar('code', { length: 21 }).notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
 });

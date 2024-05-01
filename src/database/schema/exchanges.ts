@@ -4,6 +4,7 @@ import {
   varchar,
   serial,
   timestamp,
+  uuid,
 } from 'drizzle-orm/pg-core';
 
 export type Exchange = typeof exchanges.$inferSelect;
@@ -24,7 +25,8 @@ export const ExchangeVersion = pgEnum('ExchangeVersion', ['v1', 'v2']);
 
 export const exchanges = pgTable('exchanges', {
   id: serial('id').primaryKey(),
-  userId: varchar('userId', { length: 42 }).notNull(),
+  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
+  userId: uuid('userId'),
   type: ExchangeType('type').notNull(),
   nickname: varchar('nickname', { length: 50 }).notNull(),
   apiKey: varchar('apiKey', { length: 400 }).notNull(),

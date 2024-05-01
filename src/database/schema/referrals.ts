@@ -6,6 +6,7 @@ import {
   serial,
   timestamp,
   varchar,
+  uuid,
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../../types/database/helpers';
@@ -20,7 +21,8 @@ export type ReferralWithReferredBy = InferResultType<
 
 export const referrals = pgTable('referrals', {
   id: serial('id').primaryKey(),
-  userId: varchar('userId', { length: 42 }).notNull(),
+  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
+  userId: uuid('userId'),
   referral: char('referral', { length: 42 }).notNull(),
   referralCodeId: integer('referralCodeId').notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),

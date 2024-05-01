@@ -14,7 +14,7 @@ export * from './lendingPositionUpdates';
 export * from './lendingProducts';
 export * from './lendingSummaries';
 export * from './lender';
-export * from './lendingWithdrawal';
+export * from './lendingWithdrawals';
 export * from './referralCodes';
 export * from './referrals';
 export * from './tokens';

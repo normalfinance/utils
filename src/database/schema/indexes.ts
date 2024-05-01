@@ -7,6 +7,7 @@ import {
   serial,
   timestamp,
   boolean,
+  uuid,
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../../types/database/helpers';
@@ -32,7 +33,8 @@ export const IndexStategy = pgEnum('IndexStategy', [
 
 export const indexes = pgTable('indexes', {
   id: serial('id').primaryKey(),
-  userId: varchar('userId', { length: 42 }).notNull(),
+  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
+  userId: uuid('userId'),
   title: varchar('title', { length: 50 }).notNull(),
   description: varchar('description', { length: 100 }).notNull(),
   privacy: boolean('privacy').default(true).notNull(),

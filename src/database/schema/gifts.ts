@@ -8,6 +8,7 @@ import {
   serial,
   timestamp,
   decimal,
+  uuid,
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../../types/database/helpers';
@@ -31,7 +32,8 @@ export const GiftStatus = pgEnum('GiftStatus', ['new', 'redeemed', 'failed']);
 export const gifts = pgTable('gifts', {
   id: serial('id').primaryKey(),
   idempotencyKey: char('idempotencyKey', { length: 256 }).notNull(),
-  userId: varchar('userId', { length: 42 }).notNull(),
+  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
+  userId: uuid('userId'),
   exchangeId: integer('exchangeId').notNull(),
   asset: varchar('asset', { length: 10 }).notNull(),
   amount: decimal('amount', { precision: 15, scale: 2 }).notNull(),

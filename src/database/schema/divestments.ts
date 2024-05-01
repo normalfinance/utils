@@ -8,6 +8,7 @@ import {
   decimal,
   pgEnum,
   varchar,
+  uuid,
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../../types/database/helpers';
@@ -40,7 +41,8 @@ export const DivestmentStatus = pgEnum('DivestmentStatus', [
 export const divestments = pgTable('divestments', {
   id: serial('id').primaryKey(),
   idempotencyKey: char('idempotencyKey', { length: 256 }).notNull(),
-  userId: varchar('userId', { length: 42 }).notNull(),
+  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
+  userId: uuid('userId'),
   exchangeId: integer('exchangeId').notNull(),
   indexId: integer('indexId').notNull(),
   portion: decimal('portion', { precision: 3, scale: 2 }).notNull(),

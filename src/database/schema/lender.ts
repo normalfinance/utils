@@ -6,13 +6,14 @@ import {
   serial,
   timestamp,
   boolean,
+  uuid,
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../../types/database/helpers';
 import { lendingDeposits } from './lendingDeposits';
 import { lendingPositionUpdates } from './lendingPositionUpdates';
 import { lendingSummaries } from './lendingSummaries';
-import { lendingWithdrawals } from './lendingWithdrawal';
+import { lendingWithdrawals } from './lendingWithdrawals';
 
 export type Lender = typeof lenders.$inferSelect;
 export type NewLender = typeof lenders.$inferInsert;
@@ -32,7 +33,8 @@ export type LenderWithNestedRelations = InferResultType<
 
 export const lenders = pgTable('lenders', {
   id: serial('id').primaryKey(),
-  userId: varchar('userId', { length: 42 }).notNull(),
+  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
+  userId: uuid('userId'),
   manager: char('manager', { length: 42 }).notNull(),
   active: boolean('active').notNull(),
   tag: varchar('tag', { length: 50 }).notNull(),
