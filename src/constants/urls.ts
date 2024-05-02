@@ -73,4 +73,9 @@ export const normalUrls = {
     bybit: 'https://www.bybit.com/register',
     okx: 'https://www.okx.com/account/register',
   },
+
+  stripeUrls: {
+    manageSubscriptionUrl:
+      'https://billing.stripe.com/p/login/9AQ5mOaBv0ywaoodQQ',
+  },
 };

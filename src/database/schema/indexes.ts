@@ -33,8 +33,7 @@ export const IndexStategy = pgEnum('IndexStategy', [
 
 export const indexes = pgTable('indexes', {
   id: serial('id').primaryKey(),
-  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
-  userId: uuid('userId'),
+  userId: uuid('userId').notNull(),
   title: varchar('title', { length: 50 }).notNull(),
   description: varchar('description', { length: 100 }).notNull(),
   privacy: boolean('privacy').default(true).notNull(),

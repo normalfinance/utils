@@ -25,7 +25,7 @@ export const ExchangeVersion = pgEnum('ExchangeVersion', ['v1', 'v2']);
 
 export const exchanges = pgTable('exchanges', {
   id: serial('id').primaryKey(),
-  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
+  legacyUserId: varchar('legacyUserId', { length: 42 }),
   userId: uuid('userId'),
   type: ExchangeType('type').notNull(),
   nickname: varchar('nickname', { length: 50 }).notNull(),

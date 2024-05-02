@@ -13,7 +13,7 @@ export type ReferralCodeWithReferrals = InferResultType<
 
 export const referralCodes = pgTable('referralCodes', {
   id: serial('id').primaryKey(),
-  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
+  legacyUserId: varchar('legacyUserId', { length: 42 }),
   userId: uuid('userId'),
   code: varchar('code', { length: 21 }).notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),

@@ -1,4 +1,4 @@
 export * from './exchange';
-export * from './paths';
+export * from './indexes';
 export * from './tokens';
 export * from './urls';

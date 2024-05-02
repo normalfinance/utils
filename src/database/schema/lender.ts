@@ -33,7 +33,7 @@ export type LenderWithNestedRelations = InferResultType<
 
 export const lenders = pgTable('lenders', {
   id: serial('id').primaryKey(),
-  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
+  legacyUserId: varchar('legacyUserId', { length: 42 }),
   userId: uuid('userId'),
   manager: char('manager', { length: 42 }).notNull(),
   active: boolean('active').notNull(),

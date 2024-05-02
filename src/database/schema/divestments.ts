@@ -7,7 +7,6 @@ import {
   timestamp,
   decimal,
   pgEnum,
-  varchar,
   uuid,
 } from 'drizzle-orm/pg-core';
 
@@ -41,8 +40,7 @@ export const DivestmentStatus = pgEnum('DivestmentStatus', [
 export const divestments = pgTable('divestments', {
   id: serial('id').primaryKey(),
   idempotencyKey: char('idempotencyKey', { length: 256 }).notNull(),
-  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
-  userId: uuid('userId'),
+  userId: uuid('userId').notNull(),
   exchangeId: integer('exchangeId').notNull(),
   indexId: integer('indexId').notNull(),
   portion: decimal('portion', { precision: 3, scale: 2 }).notNull(),

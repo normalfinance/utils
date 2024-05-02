@@ -32,8 +32,7 @@ export const GiftStatus = pgEnum('GiftStatus', ['new', 'redeemed', 'failed']);
 export const gifts = pgTable('gifts', {
   id: serial('id').primaryKey(),
   idempotencyKey: char('idempotencyKey', { length: 256 }).notNull(),
-  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
-  userId: uuid('userId'),
+  userId: uuid('userId').notNull(),
   exchangeId: integer('exchangeId').notNull(),
   asset: varchar('asset', { length: 10 }).notNull(),
   amount: decimal('amount', { precision: 15, scale: 2 }).notNull(),

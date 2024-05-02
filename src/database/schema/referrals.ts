@@ -2,7 +2,6 @@ import { relations } from 'drizzle-orm';
 import {
   integer,
   pgTable,
-  char,
   serial,
   timestamp,
   varchar,
@@ -21,9 +20,9 @@ export type ReferralWithReferredBy = InferResultType<
 
 export const referrals = pgTable('referrals', {
   id: serial('id').primaryKey(),
-  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
+  legacyUserId: varchar('legacyUserId', { length: 42 }),
   userId: uuid('userId'),
-  referral: char('referral', { length: 42 }).notNull(),
+  referral: varchar('referral', { length: 42 }).notNull(),
   referralCodeId: integer('referralCodeId').notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
 });

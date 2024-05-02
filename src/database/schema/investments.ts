@@ -40,7 +40,7 @@ export const InvestmentStatus = pgEnum('InvestmentStatus', [
 export const investments = pgTable('investments', {
   id: serial('id').primaryKey(),
   idempotencyKey: char('idempotencyKey', { length: 256 }).notNull(),
-  legacyUserId: varchar('legacyUserId', { length: 42 }).notNull(),
+  legacyUserId: varchar('legacyUserId', { length: 42 }),
   userId: uuid('userId'),
   exchangeId: integer('exchangeId').notNull(),
   indexId: integer('indexId').notNull(),

@@ -37,4 +37,6 @@ export const TOKEN_BLACKLIST = [
   'WBNB',
   'USTC',
   'EZETH',
+  'ANKRETH',
+  'WKAVA',
 ];
