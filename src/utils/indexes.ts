@@ -64,7 +64,7 @@ export const filterTokensByIndexCriteria = (
 
   if (topX) {
     const sortedByMarketCap = tokens.sort((a, b) =>
-      a.marketCap < b.marketCap ? 1 : -1,
+      new Decimal(a.marketCap).lessThan(b.marketCap) ? 1 : -1,
     );
     filteredTokens = sortedByMarketCap.slice(0, topX);
   } else if (assets) {
@@ -113,12 +113,14 @@ export const filterTokensByIndexCriteria = (
  * @param indexId - The index id.
  * @param tokens - Tokens to weight.
  * @param withSquareRoot - Flag to use square root weighting.
+ * @param date - The date the weights are calculated for.
  * @returns The greeting.
  */
 export const calculateWeightedMarketCapWeights = (
   indexId: Index['id'],
   tokens: Token[],
   withSquareRoot: boolean,
+  date: string,
 ): NewIndexWeight[] => {
   // Calculate total and individual market caps
   let totalMarketCap = new Decimal(0);
@@ -147,7 +149,7 @@ export const calculateWeightedMarketCapWeights = (
       indexId,
       asset: token.asset,
       weight,
-      createdOn: new Date().toJSON().slice(0, 10),
+      createdOn: date,
     };
 
     return newIndexWeights;

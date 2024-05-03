@@ -6,6 +6,7 @@ import {
   serial,
   decimal,
   date,
+  uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../../types/database/helpers';
@@ -18,13 +19,19 @@ export type IndexWeightWithIndex = InferResultType<
   { index: true }
 >;
 
-export const indexWeights = pgTable('indexWeights', {
-  id: serial('id').primaryKey(),
-  indexId: integer('indexId').notNull(),
-  asset: varchar('asset', { length: 10 }).notNull(),
-  weight: decimal('weight', { precision: 5, scale: 4 }).notNull(),
-  createdOn: date('createdOn', { mode: 'string' }).notNull(),
-});
+export const indexWeights = pgTable(
+  'indexWeights',
+  {
+    id: serial('id').primaryKey(),
+    indexId: integer('indexId').notNull(),
+    asset: varchar('asset', { length: 10 }).notNull(),
+    weight: decimal('weight', { precision: 5, scale: 4 }).notNull(),
+    createdOn: date('createdOn', { mode: 'string' }).notNull(),
+  },
+  (table) => ({
+    unq: uniqueIndex().on(table.indexId, table.asset, table.createdOn),
+  }),
+);
 
 export const indexWeightsRelations = relations(indexWeights, ({ one }) => ({
   index: one(indexes, {

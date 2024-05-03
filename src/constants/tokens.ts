@@ -15,6 +15,10 @@ export const STABLECOINS = [
   'EURS',
   'CRVUSD',
   'EURC',
+  'VUSDC',
+  'GUSD',
+  'SUSD',
+  'USDY',
 ];
 
 export const TOKEN_BLACKLIST = [
@@ -39,4 +43,9 @@ export const TOKEN_BLACKLIST = [
   'EZETH',
   'ANKRETH',
   'WKAVA',
+  'VETH',
+  'PLC',
+  'RBTC',
+  'HBTC',
+  'VBTC',
 ];
