@@ -7,6 +7,7 @@ export enum DivestmentEventName {
 
   //  API
   DivestmentCreated = 'Divestment Created',
+  DivestmentCancelled = 'Divestment Cancelled',
   DivestmentSucceeded = 'Divestment Succeeded',
   DivestmentEnrichSucceeded = 'Divestment Enrich Succeeded',
   DivestmentEnrichFailed = 'Divestment Enrich Failed',

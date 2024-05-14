@@ -7,6 +7,7 @@ export enum InvestmentEventName {
 
   // API
   InvestmentCreated = 'Investment Created',
+  InvestmentCancelled = 'Investment Cancelled',
   InvestmentSucceeded = 'Investment Succeeded',
   InvestmentEnrichSucceeded = 'Investment Enrich Succeeded',
   InvestmentEnrichFailed = 'Investment Enrich Failed',
