@@ -43,7 +43,7 @@ export const normalUrls = {
     },
     investments: {
       execute: '/v1/investments/execute',
-      fee: '/v1/investments/fee',
+      charge: '/v1/investments/charge',
     },
     divestments: {
       execute: '/v1/divestments/execute',
