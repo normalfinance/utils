@@ -8,6 +8,7 @@ import {
   timestamp,
   boolean,
   uuid,
+  uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../../types/database/helpers';
@@ -31,17 +32,23 @@ export const IndexStategy = pgEnum('IndexStategy', [
   'weighted_sqrt_mcap',
 ]);
 
-export const indexes = pgTable('indexes', {
-  id: serial('id').primaryKey(),
-  userId: uuid('userId').notNull(),
-  title: varchar('title', { length: 50 }).notNull(),
-  description: varchar('description', { length: 100 }).notNull(),
-  privacy: boolean('privacy').default(true).notNull(),
-  criteriaId: integer('criteriaId').notNull(),
-  strategy: IndexStategy('stategy').notNull(),
-  createdAt: timestamp('createdAt').defaultNow().notNull(),
-  updatedAt: timestamp('updatedAt').defaultNow().notNull(),
-});
+export const indexes = pgTable(
+  'indexes',
+  {
+    id: serial('id').primaryKey(),
+    userId: uuid('userId').notNull(),
+    title: varchar('title', { length: 50 }).notNull(),
+    description: varchar('description', { length: 100 }).notNull(),
+    privacy: boolean('privacy').default(true).notNull(),
+    criteriaId: integer('criteriaId').notNull(),
+    strategy: IndexStategy('stategy').notNull(),
+    createdAt: timestamp('createdAt').defaultNow().notNull(),
+    updatedAt: timestamp('updatedAt').defaultNow().notNull(),
+  },
+  (table) => ({
+    unq: uniqueIndex().on(table.userId, table.title),
+  }),
+);
 
 export const indexesRelations = relations(indexes, ({ one, many }) => ({
   criteria: one(indexCriteria, {

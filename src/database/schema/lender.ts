@@ -7,6 +7,7 @@ import {
   timestamp,
   boolean,
   uuid,
+  uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../../types/database/helpers';
@@ -31,16 +32,22 @@ export type LenderWithNestedRelations = InferResultType<
   }
 >;
 
-export const lenders = pgTable('lenders', {
-  id: serial('id').primaryKey(),
-  legacyUserId: varchar('legacyUserId', { length: 42 }),
-  userId: uuid('userId'),
-  manager: char('manager', { length: 42 }).notNull(),
-  active: boolean('active').notNull(),
-  tag: varchar('tag', { length: 50 }).notNull(),
-  createdAt: timestamp('createdAt').defaultNow().notNull(),
-  updatedAt: timestamp('updatedAt').defaultNow().notNull(),
-});
+export const lenders = pgTable(
+  'lenders',
+  {
+    id: serial('id').primaryKey(),
+    legacyUserId: varchar('legacyUserId', { length: 42 }),
+    userId: uuid('userId'),
+    manager: char('manager', { length: 42 }).notNull(),
+    active: boolean('active').notNull(),
+    tag: varchar('tag', { length: 50 }).notNull(),
+    createdAt: timestamp('createdAt').defaultNow().notNull(),
+    updatedAt: timestamp('updatedAt').defaultNow().notNull(),
+  },
+  (table) => ({
+    unq: uniqueIndex().on(table.manager),
+  }),
+);
 
 export const lendersRelations = relations(lenders, ({ many }) => ({
   deposits: many(lendingDeposits),

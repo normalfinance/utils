@@ -9,6 +9,7 @@ import {
   timestamp,
   decimal,
   uuid,
+  uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../../types/database/helpers';
@@ -29,23 +30,29 @@ export const GiftRedemptionType = pgEnum('GiftRedemptionType', [
 ]);
 export const GiftStatus = pgEnum('GiftStatus', ['new', 'redeemed', 'failed']);
 
-export const gifts = pgTable('gifts', {
-  id: serial('id').primaryKey(),
-  idempotencyKey: char('idempotencyKey', { length: 256 }).notNull(),
-  userId: uuid('userId').notNull(),
-  exchangeId: integer('exchangeId').notNull(),
-  asset: varchar('asset', { length: 10 }).notNull(),
-  amount: decimal('amount', { precision: 15, scale: 2 }).notNull(),
-  message: varchar('message', { length: 256 }).notNull(),
-  recipient: varchar('recipient', { length: 256 }).notNull(),
-  recipientType: GiftRecipientType('recipientType').notNull(),
-  redemptionType: GiftRedemptionType('redemptionType'),
-  redemptionAddress: char('redemptionAddress', { length: 42 }),
-  status: GiftStatus('status').notNull(),
-  createdAt: timestamp('createdAt').defaultNow().notNull(),
-  updatedAt: timestamp('updatedAt').defaultNow().notNull(),
-  redeemedAt: timestamp('redeemedAt'),
-});
+export const gifts = pgTable(
+  'gifts',
+  {
+    id: serial('id').primaryKey(),
+    idempotencyKey: char('idempotencyKey', { length: 256 }).notNull(),
+    userId: uuid('userId').notNull(),
+    exchangeId: integer('exchangeId').notNull(),
+    asset: varchar('asset', { length: 10 }).notNull(),
+    amount: decimal('amount', { precision: 15, scale: 2 }).notNull(),
+    message: varchar('message', { length: 256 }).notNull(),
+    recipient: varchar('recipient', { length: 256 }).notNull(),
+    recipientType: GiftRecipientType('recipientType').notNull(),
+    redemptionType: GiftRedemptionType('redemptionType'),
+    redemptionAddress: char('redemptionAddress', { length: 42 }),
+    status: GiftStatus('status').notNull(),
+    createdAt: timestamp('createdAt').defaultNow().notNull(),
+    updatedAt: timestamp('updatedAt').defaultNow().notNull(),
+    redeemedAt: timestamp('redeemedAt'),
+  },
+  (table) => ({
+    unq: uniqueIndex().on(table.userId, table.idempotencyKey),
+  }),
+);
 
 export const giftsRelations = relations(gifts, ({ one, many }) => ({
   exchange: one(exchanges, {
