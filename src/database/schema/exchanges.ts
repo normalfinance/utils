@@ -16,6 +16,7 @@ export type SanitizedExchange = Omit<
 
 export const ExchangeType = pgEnum('ExchangeType', [
   'coinbase',
+  'kraken',
   'binance',
   'binance_us',
   'bybit',
