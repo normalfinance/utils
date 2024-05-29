@@ -59,46 +59,68 @@ export const filterTokensByIndexCriteria = (
     minMarketCap,
     maxMarketCap,
   } = criteria;
+  // TODO: update db schema to use string[] instead of string for these cols
+  const criteriaAssets = assets?.split(',') ?? [];
+  const criteriaWhitelist = whitelist?.split(',') ?? [];
+  const criteriaBlacklist = blacklist?.split(',') ?? [];
 
   let filteredTokens: Token[] = [];
 
+  // Top x by market cap
   if (topX) {
     const sortedByMarketCap = tokens.sort((a, b) =>
-      a.marketCap < b.marketCap ? 1 : -1,
+      new Decimal(a.marketCap).lessThan(b.marketCap) ? 1 : -1,
     );
     filteredTokens = sortedByMarketCap.slice(0, topX);
-  } else if (assets) {
-    filteredTokens = tokens.filter((token) => assets.includes(token.asset));
-  } else if (minMarketCap && maxMarketCap) {
+  }
+
+  // Assets
+  else if (criteriaAssets.length) {
+    filteredTokens = tokens.filter((token) =>
+      criteriaAssets.includes(token.asset),
+    );
+  }
+
+  // Min and max market cap
+  else if (minMarketCap && maxMarketCap) {
     filteredTokens = tokens.filter(
       (token) =>
         new Decimal(minMarketCap).lessThanOrEqualTo(token.marketCap) &&
         new Decimal(token.marketCap).lessThanOrEqualTo(maxMarketCap),
     );
-  } else if (minMarketCap) {
+  }
+
+  // Minimum market cap
+  else if (minMarketCap) {
     filteredTokens = tokens.filter((token) =>
       new Decimal(minMarketCap).lessThanOrEqualTo(token.marketCap),
     );
-  } else if (maxMarketCap) {
+  }
+
+  // Maximum market cap
+  else if (maxMarketCap) {
     filteredTokens = tokens.filter((token) =>
       new Decimal(token.marketCap).lessThanOrEqualTo(maxMarketCap),
     );
   }
 
-  if (whitelist) {
+  // Whitelist assets
+  if (criteriaWhitelist.length) {
     tokens.forEach((token) => {
-      if (whitelist.includes(token.asset)) {
+      if (criteriaWhitelist.includes(token.asset)) {
         filteredTokens.push(token);
       }
     });
   }
 
-  if (blacklist) {
+  // Blacklist assets
+  if (criteriaBlacklist.length) {
     filteredTokens = filteredTokens.filter(
-      (token) => !blacklist.includes(token.asset),
+      (token) => !criteriaBlacklist.includes(token.asset),
     );
   }
 
+  // Stablecoins
   if (!includeStablecoins) {
     filteredTokens = filteredTokens.filter(
       (token) => !STABLECOINS.includes(token.asset),
@@ -113,12 +135,14 @@ export const filterTokensByIndexCriteria = (
  * @param indexId - The index id.
  * @param tokens - Tokens to weight.
  * @param withSquareRoot - Flag to use square root weighting.
+ * @param date - The date the weights are calculated for.
  * @returns The greeting.
  */
 export const calculateWeightedMarketCapWeights = (
   indexId: Index['id'],
   tokens: Token[],
   withSquareRoot: boolean,
+  date: string,
 ): NewIndexWeight[] => {
   // Calculate total and individual market caps
   let totalMarketCap = new Decimal(0);
@@ -147,7 +171,7 @@ export const calculateWeightedMarketCapWeights = (
       indexId,
       asset: token.asset,
       weight,
-      createdOn: new Date().toJSON().slice(0, 10),
+      createdOn: date,
     };
 
     return newIndexWeights;

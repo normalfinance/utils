@@ -43,7 +43,7 @@ export const normalUrls = {
     },
     investments: {
       execute: '/v1/investments/execute',
-      fee: '/v1/investments/fee',
+      charge: '/v1/investments/charge',
     },
     divestments: {
       execute: '/v1/divestments/execute',
@@ -72,5 +72,10 @@ export const normalUrls = {
     binance_us: 'https://www.binance.us/register',
     bybit: 'https://www.bybit.com/register',
     okx: 'https://www.okx.com/account/register',
+  },
+
+  stripeUrls: {
+    manageSubscriptionUrl:
+      'https://billing.stripe.com/p/login/9AQ5mOaBv0ywaoodQQ',
   },
 };

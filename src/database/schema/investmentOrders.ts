@@ -5,6 +5,7 @@ import {
   varchar,
   serial,
   timestamp,
+  uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../../types/database/helpers';
@@ -31,18 +32,24 @@ export type InvestmentOrderWithNestedRelations = InferResultType<
   }
 >;
 
-export const investmentOrders = pgTable('investmentOrders', {
-  id: serial('id').primaryKey(),
-  investmentId: integer('investmentId').notNull(),
-  orderId: varchar('orderId', { length: 256 }).notNull(),
-  asset: varchar('asset', { length: 10 }).notNull(),
-  price: varchar('price', { length: 40 }).notNull(),
-  amount: varchar('amount', { length: 40 }).notNull(),
-  usdValue: varchar('usdValue', { length: 40 }).notNull(),
-  fee: varchar('fee', { length: 40 }).notNull(),
-  createdAt: timestamp('createdAt').defaultNow().notNull(),
-  updatedAt: timestamp('updatedAt').defaultNow().notNull(),
-});
+export const investmentOrders = pgTable(
+  'investmentOrders',
+  {
+    id: serial('id').primaryKey(),
+    investmentId: integer('investmentId').notNull(),
+    orderId: varchar('orderId', { length: 256 }).notNull(),
+    asset: varchar('asset', { length: 10 }).notNull(),
+    price: varchar('price', { length: 40 }).notNull(),
+    amount: varchar('amount', { length: 40 }).notNull(),
+    usdValue: varchar('usdValue', { length: 40 }).notNull(),
+    fee: varchar('fee', { length: 40 }).notNull(),
+    createdAt: timestamp('createdAt').defaultNow().notNull(),
+    updatedAt: timestamp('updatedAt').defaultNow().notNull(),
+  },
+  (table) => ({
+    unq: uniqueIndex().on(table.orderId),
+  }),
+);
 
 export const investmentOrdersRelations = relations(
   investmentOrders,

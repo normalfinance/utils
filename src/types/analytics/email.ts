@@ -10,11 +10,13 @@ export enum TransactionalEmailTemplateId {
 
   // Investment
   InvestmentCreated = 'investment_created',
+  InvestmentCancelled = 'investment_cancelled',
   InvestmentSucceeded = 'investment_succeeded',
   InvestmentFailed = 'investment_failed',
 
   // Divestment
   DivestmentCreated = 'divestment_created',
+  DivestmentCancelled = 'divestment_cancelled',
   DivestmentSucceeded = 'divestment_succeeded',
   DivestmentFailed = 'divestment_failed',
 
@@ -60,6 +62,10 @@ export type TransactionalEmailArgs = {
     index: string;
     amount: string;
   };
+  [TransactionalEmailTemplateId.InvestmentCancelled]: {
+    index: string;
+    amount: string;
+  };
   [TransactionalEmailTemplateId.InvestmentSucceeded]: {
     index: string;
     amount: string;
@@ -71,6 +77,10 @@ export type TransactionalEmailArgs = {
 
   // Divestment
   [TransactionalEmailTemplateId.DivestmentCreated]: {
+    index: string;
+    portion: string;
+  };
+  [TransactionalEmailTemplateId.DivestmentCancelled]: {
     index: string;
     portion: string;
   };

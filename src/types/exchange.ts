@@ -1,3 +1,5 @@
+import type { SanitizedExchange } from '../database';
+
 // Base units
 export type ExchangeBalance = {
   asset: string;
@@ -39,11 +41,14 @@ export type GetExchangeDepositsResponse =
 export type GetExchangeOrdersResponse =
   | {
       error: string;
-      orders: undefined;
+      data: undefined;
     }
   | {
       error: undefined;
-      orders: ExchangeOrder[];
+      data: {
+        exchanges: SanitizedExchange[];
+        orders: ExchangeOrder[];
+      };
     };
 
 export type GetExchangePaymentMethodsResponse =
