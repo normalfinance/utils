@@ -16,6 +16,7 @@ import type { InferResultType } from '../../types/database/helpers';
 import { exchanges } from './exchanges';
 import { indexes } from './indexes';
 import { investmentOrders } from './investmentOrders';
+import { schedules } from './schedules';
 
 export type Investment = typeof investments.$inferSelect;
 export type NewInvestment = typeof investments.$inferInsert;
@@ -28,6 +29,10 @@ export type InvestmentWithRelations = InferResultType<
   }
 >;
 
+export const InvestmentExecutionType = pgEnum('InvestmentExecutionType', [
+  'user',
+  'auto',
+]);
 export const InvestmentCurrency = pgEnum('InvestmentCurrency', ['USD', 'USDT']);
 export const InvestmentStatus = pgEnum('InvestmentStatus', [
   'new',
@@ -47,6 +52,7 @@ export const investments = pgTable(
     userId: uuid('userId'),
     exchangeId: integer('exchangeId').notNull(),
     indexId: integer('indexId').notNull(),
+    scheduleId: integer('scheduleId'),
     amount: decimal('amount', { precision: 15, scale: 2 }).notNull(),
     currency: InvestmentCurrency('currency').notNull(),
     fee: decimal('fee', { precision: 15, scale: 2 }),
@@ -76,4 +82,8 @@ export const investmentsRelations = relations(investments, ({ one, many }) => ({
     references: [indexes.id],
   }),
   orders: many(investmentOrders),
+  schedule: one(schedules, {
+    fields: [investments.scheduleId],
+    references: [schedules.id],
+  }),
 }));

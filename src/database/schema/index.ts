@@ -21,4 +21,5 @@ export * from './notificationSettings';
 export * from './notificationTypes';
 export * from './referralCodes';
 export * from './referrals';
+export * from './schedules';
 export * from './tokens';
