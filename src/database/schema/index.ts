@@ -18,4 +18,5 @@ export * from './lender';
 export * from './lendingWithdrawals';
 export * from './referralCodes';
 export * from './referrals';
+export * from './schedules';
 export * from './tokens';

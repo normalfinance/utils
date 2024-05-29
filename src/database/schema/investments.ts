@@ -28,6 +28,10 @@ export type InvestmentWithRelations = InferResultType<
   }
 >;
 
+export const InvestmentExecutionType = pgEnum('InvestmentExecutionType', [
+  'user',
+  'auto',
+]);
 export const InvestmentCurrency = pgEnum('InvestmentCurrency', ['USD', 'USDT']);
 export const InvestmentStatus = pgEnum('InvestmentStatus', [
   'new',
@@ -47,6 +51,7 @@ export const investments = pgTable(
     userId: uuid('userId'),
     exchangeId: integer('exchangeId').notNull(),
     indexId: integer('indexId').notNull(),
+    executionType: InvestmentExecutionType('executionType').notNull(),
     amount: decimal('amount', { precision: 15, scale: 2 }).notNull(),
     currency: InvestmentCurrency('currency').notNull(),
     fee: decimal('fee', { precision: 15, scale: 2 }),
