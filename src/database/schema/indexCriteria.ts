@@ -17,7 +17,7 @@ export const indexCriteria = pgTable('indexCriteria', {
   assets: varchar('assets', { length: 256 }), // BTC, ETH
   whitelist: varchar('whitelist', { length: 256 }), // BTC, ETH
   blacklist: varchar('blacklist', { length: 256 }), // BTC, ETH
-  includeStablecoins: boolean('includeStablecoins'),
+  includeStablecoins: boolean('includeStablecoins').default(false).notNull(),
   minMarketCap: bigint('minMarketCap', { mode: 'number' }),
   maxMarketCap: bigint('maxMarketCap', { mode: 'number' }),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
