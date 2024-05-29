@@ -31,10 +31,6 @@ export type DivestmentWithRelations = InferResultType<
   }
 >;
 
-export const DivestmentExecutionType = pgEnum('DivestmentExecutionType', [
-  'user',
-  'auto',
-]);
 export const DivestmentStatus = pgEnum('DivestmentStatus', [
   'new',
   'processing',
@@ -50,7 +46,6 @@ export const divestments = pgTable(
     userId: uuid('userId').notNull(),
     exchangeId: integer('exchangeId').notNull(),
     indexId: integer('indexId').notNull(),
-    executionType: DivestmentExecutionType('executionType').notNull(),
     portion: decimal('portion', { precision: 3, scale: 2 }).notNull(),
     status: DivestmentStatus('status').notNull(),
     createdAt: timestamp('createdAt').defaultNow().notNull(),
