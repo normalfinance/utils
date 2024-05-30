@@ -35,6 +35,14 @@ export enum TransactionalEmailTemplateId {
   GiftRedemptionFailedSender = 'gift_redemption_failed_sender',
   GiftRedemptionSucceededRecipient = 'gift_redemption_succeeded_recipient',
   GiftRedemptionFailedRecipient = 'gift_redemption_failed_recipient',
+
+  // Schedule
+  ScheduleCreated = 'schedule_created',
+  ScheduleDisabled = 'schedule_disabled',
+  ScheduleEnabled = 'schedule_enabled',
+  ScheduleDeleted = 'schedule_deleted',
+  ScheduleExecutionSucceeded = 'schedule_execution_succeeded',
+  ScheduleExecutionFailed = 'schedule_execution_failed',
 }
 
 export type TransactionalEmailArgs = {
@@ -144,5 +152,35 @@ export type TransactionalEmailArgs = {
     amount: string;
     recipient: string;
     action: string;
+  };
+
+  // Schedule
+  [TransactionalEmailTemplateId.ScheduleCreated]: {
+    asset: string;
+    amount: string;
+    amountType: 'fiat' | 'crypto';
+    frequency: string;
+  };
+  [TransactionalEmailTemplateId.ScheduleDisabled]: {
+    asset: string;
+    frequency: string;
+  };
+  [TransactionalEmailTemplateId.ScheduleEnabled]: {
+    asset: string;
+    frequency: string;
+  };
+  [TransactionalEmailTemplateId.ScheduleDeleted]: {
+    asset: string;
+    frequency: string;
+  };
+  [TransactionalEmailTemplateId.ScheduleExecutionSucceeded]: {
+    asset: string;
+    frequency: string;
+    amount: string;
+  };
+  [TransactionalEmailTemplateId.ScheduleExecutionFailed]: {
+    asset: string;
+    frequency: string;
+    amount: string;
   };
 };
