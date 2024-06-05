@@ -16,6 +16,7 @@ export const normalUrls = {
       binance_us: `${helpUrl}/en/articles/8415116-how-to-create-and-set-up-binance-us-api-key`,
       bybit: `${helpUrl}/en/articles/8420567-how-to-create-and-set-up-bybit-api-key`,
       okx: `${helpUrl}/en/articles/8420945-how-to-create-and-set-up-okx-api-key`,
+      kraken: `${helpUrl}/en/articles/9010535-how-to-create-a-kraken-api-key`,
     },
   },
   docsUrl: `https://docs.${NORMAL_WEB_HOSTNAME}`,
@@ -48,11 +49,7 @@ export const normalUrls = {
     divestments: {
       execute: '/v1/divestments/execute',
     },
-    gifts: {
-      root: '/v1/gifts',
-      execute: '/v1/gifts/execute',
-      redeem: '/v1/gifts/redeem',
-    },
+    schedules: '/v1/schedules',
   },
 
   // Web Interface Urls
@@ -64,6 +61,8 @@ export const normalUrls = {
   webInterfaceExchangesUrl: `${NORMAL_WEB_URL}/user/account?tab=exchanges`,
   webInterfaceBillingUrl: `${NORMAL_WEB_URL}/user/account?tab=billing`,
   webInterfaceReferralsUrl: `${NORMAL_WEB_URL}/user/account?tab=referrals`,
+  webInterfaceSecurityUrl: `${NORMAL_WEB_URL}/user/account?tab=security`,
+  webInterfaceNotificationsUrl: `${NORMAL_WEB_URL}/user/account?tab=notifications`,
 
   exchangeAccountRegistrationUrls: {
     coinbase: 'https://www.coinbase.com/signup',
@@ -72,6 +71,7 @@ export const normalUrls = {
     binance_us: 'https://www.binance.us/register',
     bybit: 'https://www.bybit.com/register',
     okx: 'https://www.okx.com/account/register',
+    kraken: 'https://www.kraken.com/sign-up?type=personal',
   },
 
   stripeUrls: {
