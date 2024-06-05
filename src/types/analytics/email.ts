@@ -38,8 +38,7 @@ export enum TransactionalEmailTemplateId {
 
   // Schedule
   ScheduleCreated = 'schedule_created',
-  ScheduleDisabled = 'schedule_disabled',
-  ScheduleEnabled = 'schedule_enabled',
+  ScheduleUpdated = 'schedule_updated',
   ScheduleDeleted = 'schedule_deleted',
   ScheduleExecutionSucceeded = 'schedule_execution_succeeded',
   ScheduleExecutionFailed = 'schedule_execution_failed',
@@ -158,14 +157,10 @@ export type TransactionalEmailArgs = {
   [TransactionalEmailTemplateId.ScheduleCreated]: {
     asset: string;
     amount: string;
-    amountType: 'fiat' | 'crypto';
+    amountType: string;
     frequency: string;
   };
-  [TransactionalEmailTemplateId.ScheduleDisabled]: {
-    asset: string;
-    frequency: string;
-  };
-  [TransactionalEmailTemplateId.ScheduleEnabled]: {
+  [TransactionalEmailTemplateId.ScheduleUpdated]: {
     asset: string;
     frequency: string;
   };

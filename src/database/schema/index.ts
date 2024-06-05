@@ -16,7 +16,7 @@ export * from './lendingProducts';
 export * from './lendingSummaries';
 export * from './lender';
 export * from './lendingWithdrawals';
-export * from './notifications';
+export * from './notificationGroups';
 export * from './notificationSettings';
 export * from './notificationTypes';
 export * from './referralCodes';
