@@ -33,7 +33,27 @@ export const InvestmentExecutionType = pgEnum('InvestmentExecutionType', [
   'user',
   'auto',
 ]);
-export const InvestmentCurrency = pgEnum('InvestmentCurrency', ['USD', 'USDT']);
+export const InvestmentCurrency = pgEnum('InvestmentCurrency', [
+  'USD',
+  'USDC',
+  'USDT',
+  'EUR',
+  'CAD',
+  'GBP',
+  'CHF',
+  'AUD',
+  'JPY',
+  'ART',
+  'BRL',
+  'CZK',
+  'IDRT',
+  'MXN',
+  'PLN',
+  'RON',
+  'TRY',
+  'UAH',
+  'ZAR',
+]);
 export const InvestmentStatus = pgEnum('InvestmentStatus', [
   'new',
   'processing',

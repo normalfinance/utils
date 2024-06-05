@@ -13,6 +13,7 @@ import {
 
 import { exchanges } from './exchanges';
 import { indexes } from './indexes';
+import { InvestmentCurrency } from './investments';
 
 export type Schedule = typeof schedules.$inferSelect;
 export type NewSchedule = typeof schedules.$inferInsert;
@@ -29,6 +30,7 @@ export const schedules = pgTable('schedules', {
   frequency: interval('frequency').notNull(),
   asset: varchar('asset', { length: 10 }),
   indexId: integer('indexId'),
+  currency: InvestmentCurrency('currency').notNull(),
   amountType: ScheduleAmountType('amountType').notNull(),
   amount: varchar('amount').notNull(),
   active: boolean('active').default(true).notNull(),
