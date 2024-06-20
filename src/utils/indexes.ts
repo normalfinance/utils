@@ -8,25 +8,25 @@ import type {
   NewIndexWeight,
   Token,
 } from '../database';
-import { IndexFee } from '../types/subscription';
+import { IndexFee } from '../types/fee';
 
 /**
  * Calculates the fee for an index investment.
- * @param rollingTotal - The user's total investments for a given period of time.
+ * @param monthlyVolume - The user's total investments for a given period of time.
  * @param investment - The new investment amount.
  * @returns The index fee for a new investment.
  */
 export const calculateIndexFee = (
-  rollingTotal: Decimal,
+  monthlyVolume: Decimal,
   investment: Decimal,
 ): Decimal => {
-  if (rollingTotal.lessThanOrEqualTo(50_000)) {
+  if (monthlyVolume.lessThanOrEqualTo(100_000)) {
     return investment.mul(IndexFee.Tier1);
   }
-  if (rollingTotal.lessThanOrEqualTo(500_000)) {
+  if (monthlyVolume.lessThanOrEqualTo(500_000)) {
     return investment.mul(IndexFee.Tier2);
   }
-  if (rollingTotal.lessThanOrEqualTo(1_000_000)) {
+  if (monthlyVolume.lessThanOrEqualTo(1_000_000)) {
     return investment.mul(IndexFee.Tier3);
   }
   return investment.mul(IndexFee.Tier4);

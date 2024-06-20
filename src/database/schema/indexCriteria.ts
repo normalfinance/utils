@@ -21,4 +21,5 @@ export const indexCriteria = pgTable('indexCriteria', {
   minMarketCap: bigint('minMarketCap', { mode: 'number' }),
   maxMarketCap: bigint('maxMarketCap', { mode: 'number' }),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
+  updatedAt: timestamp('updatedAt').defaultNow().notNull(),
 });

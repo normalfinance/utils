@@ -17,6 +17,8 @@ export const normalUrls = {
       bybit: `${helpUrl}/en/articles/8420567-how-to-create-and-set-up-bybit-api-key`,
       okx: `${helpUrl}/en/articles/8420945-how-to-create-and-set-up-okx-api-key`,
       kraken: `${helpUrl}/en/articles/9010535-how-to-create-a-kraken-api-key`,
+      gemini: `${helpUrl}/en/articles/8420781-how-to-create-and-set-up-gemini-api-key`,
+      kucoin: `${helpUrl}/en/articles/8420905-how-to-create-and-set-up-kucoin-api-key`,
     },
   },
   docsUrl: `https://docs.${NORMAL_WEB_HOSTNAME}`,
@@ -59,7 +61,6 @@ export const normalUrls = {
   webInterfaceOrdersUrl: `${NORMAL_WEB_URL}/orders`,
   webInterfaceEducationUrl: `${NORMAL_WEB_URL}/education`,
   webInterfaceExchangesUrl: `${NORMAL_WEB_URL}/user/account?tab=exchanges`,
-  webInterfaceBillingUrl: `${NORMAL_WEB_URL}/user/account?tab=billing`,
   webInterfaceReferralsUrl: `${NORMAL_WEB_URL}/user/account?tab=referrals`,
   webInterfaceSecurityUrl: `${NORMAL_WEB_URL}/user/account?tab=security`,
   webInterfaceNotificationsUrl: `${NORMAL_WEB_URL}/user/account?tab=notifications`,
@@ -71,11 +72,8 @@ export const normalUrls = {
     binance_us: 'https://www.binance.us/register',
     bybit: 'https://www.bybit.com/register',
     okx: 'https://www.okx.com/account/register',
-    kraken: 'https://www.kraken.com/sign-up?type=personal',
-  },
-
-  stripeUrls: {
-    manageSubscriptionUrl:
-      'https://billing.stripe.com/p/login/9AQ5mOaBv0ywaoodQQ',
+    kraken: 'https://www.kraken.com/sign-up',
+    gemini: 'https://exchange.gemini.com/register',
+    kucoin: 'https://www.kucoin.com/ucenter/signup',
   },
 };
