@@ -13,11 +13,31 @@ import {
 
 import { exchanges } from './exchanges';
 import { indexes } from './indexes';
-import { InvestmentCurrency } from './investments';
 
 export type Schedule = typeof schedules.$inferSelect;
 export type NewSchedule = typeof schedules.$inferInsert;
 
+export const ScheduleCurrency = pgEnum('ScheduleCurrency', [
+  'USD',
+  'USDC',
+  'USDT',
+  'EUR',
+  'CAD',
+  'GBP',
+  'CHF',
+  'AUD',
+  'JPY',
+  'ART',
+  'BRL',
+  'CZK',
+  'IDRT',
+  'MXN',
+  'PLN',
+  'RON',
+  'TRY',
+  'UAH',
+  'ZAR',
+]);
 export const ScheduleAmountType = pgEnum('ScheduleAmountType', [
   'fiat',
   'crypto',
@@ -30,8 +50,7 @@ export const schedules = pgTable('schedules', {
   frequency: interval('frequency').notNull(),
   asset: varchar('asset', { length: 10 }),
   indexId: integer('indexId'),
-  currency: InvestmentCurrency('currency').notNull(),
-  amountType: ScheduleAmountType('amountType').notNull(),
+  currency: ScheduleCurrency('currency').notNull(),
   amount: varchar('amount').notNull(),
   active: boolean('active').default(true).notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),

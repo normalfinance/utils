@@ -15,7 +15,6 @@ import type { InferResultType } from '../../types/database/helpers';
 import { divestmentOrders } from './divestmentOrders';
 import { exchanges } from './exchanges';
 import { indexes } from './indexes';
-import { InvestmentCurrency } from './investments';
 
 export type Divestment = typeof divestments.$inferSelect;
 export type NewDivestment = typeof divestments.$inferInsert;
@@ -32,6 +31,27 @@ export type DivestmentWithRelations = InferResultType<
   }
 >;
 
+export const DivestmentCurrency = pgEnum('DivestmentCurrency', [
+  'USD',
+  'USDC',
+  'USDT',
+  'EUR',
+  'CAD',
+  'GBP',
+  'CHF',
+  'AUD',
+  'JPY',
+  'ART',
+  'BRL',
+  'CZK',
+  'IDRT',
+  'MXN',
+  'PLN',
+  'RON',
+  'TRY',
+  'UAH',
+  'ZAR',
+]);
 export const DivestmentStatus = pgEnum('DivestmentStatus', [
   'new',
   'processing',
@@ -48,7 +68,7 @@ export const divestments = pgTable(
     exchangeId: integer('exchangeId').notNull(),
     indexId: integer('indexId').notNull(),
     portion: decimal('portion', { precision: 3, scale: 2 }).notNull(),
-    currency: InvestmentCurrency('currency').notNull(),
+    currency: DivestmentCurrency('currency').notNull(),
     status: DivestmentStatus('status').notNull(),
     createdAt: timestamp('createdAt').defaultNow().notNull(),
     updatedAt: timestamp('updatedAt').defaultNow().notNull(),

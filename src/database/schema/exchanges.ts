@@ -21,6 +21,8 @@ export const ExchangeType = pgEnum('ExchangeType', [
   'binance_us',
   'bybit',
   'okx',
+  'gemini',
+  'kucoin',
 ]);
 export const ExchangeVersion = pgEnum('ExchangeVersion', ['v1', 'v2']);
 
