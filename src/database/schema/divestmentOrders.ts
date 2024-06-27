@@ -5,7 +5,6 @@ import {
   varchar,
   serial,
   timestamp,
-  decimal,
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
@@ -40,10 +39,10 @@ export const divestmentOrders = pgTable(
     divestmentId: integer('divestmentId').notNull(),
     orderId: varchar('orderId', { length: 256 }).notNull(),
     asset: varchar('asset', { length: 10 }).notNull(),
-    price: decimal('price', { precision: 15, scale: 2 }).notNull(),
+    price: varchar('price', { length: 40 }).notNull(),
     amount: varchar('amount', { length: 256 }).notNull(),
-    usdValue: decimal('usdValue', { precision: 15, scale: 2 }).notNull(),
-    fee: decimal('fee', { precision: 15, scale: 2 }).notNull(),
+    usdValue: varchar('usdValue', { length: 40 }).notNull(),
+    fee: varchar('fee', { length: 40 }).notNull(),
     createdAt: timestamp('createdAt').defaultNow().notNull(),
     updatedAt: timestamp('updatedAt').defaultNow().notNull(),
   },
