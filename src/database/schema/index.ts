@@ -19,6 +19,8 @@ export * from './lendingWithdrawals';
 export * from './notificationGroups';
 export * from './notificationSettings';
 export * from './notificationTypes';
+export * from './rebalanceOrders';
+export * from './rebalances';
 export * from './referralCodes';
 export * from './referrals';
 export * from './schedules';

@@ -16,6 +16,7 @@ import type { InferResultType } from '../../types/database/helpers';
 import { exchanges } from './exchanges';
 import { indexes } from './indexes';
 import { investmentOrders } from './investmentOrders';
+import { rebalances } from './rebalances';
 import { schedules } from './schedules';
 
 export type Investment = typeof investments.$inferSelect;
@@ -106,4 +107,5 @@ export const investmentsRelations = relations(investments, ({ one, many }) => ({
     fields: [investments.scheduleId],
     references: [schedules.id],
   }),
+  rebalances: many(rebalances),
 }));
