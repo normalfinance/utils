@@ -10,6 +10,7 @@ import {
   varchar,
   uuid,
   uniqueIndex,
+  interval,
 } from 'drizzle-orm/pg-core';
 
 import type { InferResultType } from '../../types/database/helpers';
@@ -84,6 +85,11 @@ export const investments = pgTable(
     feeTransferId: varchar('feeTransferId', {
       length: 256,
     }),
+    rebalanceFrequency: interval('rebalanceFrequency', {
+      fields: 'month',
+    })
+      .default('1 month')
+      .notNull(),
     status: InvestmentStatus('status').notNull(),
     createdAt: timestamp('createdAt').defaultNow().notNull(),
     updatedAt: timestamp('updatedAt').defaultNow().notNull(),
