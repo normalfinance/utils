@@ -68,7 +68,7 @@ export const divestments = pgTable(
     exchangeId: integer('exchangeId').notNull(),
     indexId: integer('indexId').notNull(),
     portion: decimal('portion', { precision: 3, scale: 2 }).notNull(),
-    currency: DivestmentCurrency('currency').notNull(),
+    currency: DivestmentCurrency('currency').notNull().default('USD'),
     status: DivestmentStatus('status').notNull(),
     createdAt: timestamp('createdAt').defaultNow().notNull(),
     updatedAt: timestamp('updatedAt').defaultNow().notNull(),

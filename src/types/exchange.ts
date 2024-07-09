@@ -1,4 +1,6 @@
-// Base units
+import type { Exchange } from '../database';
+
+// Base types
 export type ExchangeBalance = {
   asset: string;
   amount: string;
@@ -6,8 +8,10 @@ export type ExchangeBalance = {
 export type PortfolioItem = ExchangeBalance & {
   price: string;
   usdValue: string;
+  oneHourChange: string;
   oneDayChange: string;
   oneWeekChange: string;
+  marketCap: string;
   allocation: string;
 };
 export type ExchangeDeposit = Record<string, any>;
@@ -25,7 +29,7 @@ export type ExchangeOrder = {
   createdAt: string;
 };
 
-// Responses
+// Response types
 export type GetExchangeDepositsResponse =
   | {
       error: string;
@@ -56,12 +60,17 @@ export type GetExchangePaymentMethodsResponse =
       paymentMethods: ExchangePaymentMethod[];
     };
 
-export type GetExchangePortfolioResponse =
+export type BalanceInfo = {
+  total: string;
+  byExchange: Record<Exchange['id'], string>;
+};
+
+export type GetExchangeBalancesResponse =
   | {
       error: string;
-      portfolio: undefined;
+      balances: undefined;
     }
   | {
       error: undefined;
-      portfolio: PortfolioItem[];
+      balances: BalanceInfo;
     };
