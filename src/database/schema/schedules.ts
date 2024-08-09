@@ -11,33 +11,18 @@ import {
   boolean,
 } from 'drizzle-orm/pg-core';
 
+import { IndexQuoteCurrency } from '../../types';
+import { enumToPgEnum } from '../../utils/drizzle';
 import { exchanges } from './exchanges';
 import { indexes } from './indexes';
 
 export type Schedule = typeof schedules.$inferSelect;
 export type NewSchedule = typeof schedules.$inferInsert;
 
-export const ScheduleCurrency = pgEnum('ScheduleCurrency', [
-  'USD',
-  'USDC',
-  'USDT',
-  'EUR',
-  'CAD',
-  'GBP',
-  'CHF',
-  'AUD',
-  'JPY',
-  'ART',
-  'BRL',
-  'CZK',
-  'IDRT',
-  'MXN',
-  'PLN',
-  'RON',
-  'TRY',
-  'UAH',
-  'ZAR',
-]);
+export const ScheduleCurrency = pgEnum(
+  'ScheduleCurrency',
+  enumToPgEnum(IndexQuoteCurrency),
+);
 export const ScheduleAmountType = pgEnum('ScheduleAmountType', [
   'fiat',
   'crypto',

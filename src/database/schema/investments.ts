@@ -12,7 +12,9 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
+import { IndexQuoteCurrency } from '../../types';
 import type { InferResultType } from '../../types/database/helpers';
+import { enumToPgEnum } from '../../utils/drizzle';
 import { exchanges } from './exchanges';
 import { indexes } from './indexes';
 import { investmentOrders } from './investmentOrders';
@@ -33,27 +35,12 @@ export const InvestmentExecutionType = pgEnum('InvestmentExecutionType', [
   'user',
   'auto',
 ]);
-export const InvestmentCurrency = pgEnum('InvestmentCurrency', [
-  'USD',
-  'USDC',
-  'USDT',
-  'EUR',
-  'CAD',
-  'GBP',
-  'CHF',
-  'AUD',
-  'JPY',
-  'ART',
-  'BRL',
-  'CZK',
-  'IDRT',
-  'MXN',
-  'PLN',
-  'RON',
-  'TRY',
-  'UAH',
-  'ZAR',
-]);
+
+export const InvestmentCurrency = pgEnum(
+  'InvestmentCurrency',
+  enumToPgEnum(IndexQuoteCurrency),
+);
+
 export const InvestmentStatus = pgEnum('InvestmentStatus', [
   'new',
   'processing',

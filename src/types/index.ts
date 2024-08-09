@@ -4,3 +4,4 @@ export * from './database';
 export * from './exchange';
 export * from './order';
 export * from './fee';
+export * from './indexes';

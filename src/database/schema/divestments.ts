@@ -11,7 +11,9 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
+import { IndexQuoteCurrency } from '../../types';
 import type { InferResultType } from '../../types/database/helpers';
+import { enumToPgEnum } from '../../utils/drizzle';
 import { divestmentOrders } from './divestmentOrders';
 import { exchanges } from './exchanges';
 import { indexes } from './indexes';
@@ -31,27 +33,11 @@ export type DivestmentWithRelations = InferResultType<
   }
 >;
 
-export const DivestmentCurrency = pgEnum('DivestmentCurrency', [
-  'USD',
-  'USDC',
-  'USDT',
-  'EUR',
-  'CAD',
-  'GBP',
-  'CHF',
-  'AUD',
-  'JPY',
-  'ART',
-  'BRL',
-  'CZK',
-  'IDRT',
-  'MXN',
-  'PLN',
-  'RON',
-  'TRY',
-  'UAH',
-  'ZAR',
-]);
+export const DivestmentCurrency = pgEnum(
+  'DivestmentCurrency',
+  enumToPgEnum(IndexQuoteCurrency),
+);
+
 export const DivestmentStatus = pgEnum('DivestmentStatus', [
   'new',
   'processing',
@@ -68,7 +54,7 @@ export const divestments = pgTable(
     exchangeId: integer('exchangeId').notNull(),
     indexId: integer('indexId').notNull(),
     portion: decimal('portion', { precision: 3, scale: 2 }).notNull(),
-    currency: DivestmentCurrency('currency').notNull().default('USD'),
+    currency: DivestmentCurrency('currency').notNull(),
     status: DivestmentStatus('status').notNull(),
     createdAt: timestamp('createdAt').defaultNow().notNull(),
     updatedAt: timestamp('updatedAt').defaultNow().notNull(),

@@ -65,12 +65,12 @@ export type BalanceInfo = {
   byExchange: Record<Exchange['id'], string>;
 };
 
-export type GetExchangeBalancesResponse =
+export type GetExchangePortfolioResponse =
   | {
       error: string;
-      balances: undefined;
+      portfolio: undefined;
     }
   | {
       error: undefined;
-      balances: BalanceInfo;
+      portfolio: PortfolioItem[];
     };

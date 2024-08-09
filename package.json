@@ -1,6 +1,6 @@
 {
   "name": "@normalfinance/utils",
-  "version": "1.5.7",
+  "version": "1.5.9",
   "description": "A Typescript modules for frequently used types, utilities, constants, and more across Normal repositories.",
   "homepage": "https://github.com/normalfinance/utils#readme",
   "bugs": {
