@@ -1,6 +1,8 @@
-export type NewExchangeDeposit = {
+import type { IndexQuoteFiatCurrency } from '../indexes';
+
+export type NewExchangeFiatTransfer = {
   exchangeId: string;
-  amount: string;
-  currency: 'USD' | 'USDC';
+  currency: IndexQuoteFiatCurrency;
   paymentMethodId: string;
+  amount: string;
 };

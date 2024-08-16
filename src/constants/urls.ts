@@ -41,6 +41,7 @@ export const normalUrls = {
       paymentMethods: '/v1/exchanges/payment-methods',
       address: '/v1/exchanges/address',
       deposits: '/v1/exchanges/deposits',
+      withdrawals: '/v1/exchanges/withdrawals',
       balance: '/v1/exchanges/balance',
       transactions: '/v1/exchanges/transactions',
     },
