@@ -16,7 +16,7 @@ export const ExchangeTradeMinimums = {
   kucoin: 0.1, // (https://www.kucoin.com/announcement/en-adjustment-of-minimum-spot-and-margin-trading-amountsƒ)
 };
 
-export const ExchangeSupportedFiats: Record<
+export const ExchangeIndexQuoteCurrencies: Record<
   string,
   (IndexQuoteCryptoCurrency | IndexQuoteFiatCurrency)[]
 > = {
@@ -25,9 +25,9 @@ export const ExchangeSupportedFiats: Record<
   bybit: [IndexQuoteCurrency.USDT],
   coinbase: [
     IndexQuoteCurrency.USD,
-    IndexQuoteCurrency.USDC,
     IndexQuoteCurrency.EUR,
     IndexQuoteCurrency.GBP,
+    IndexQuoteCurrency.USDC,
   ],
   okx: [IndexQuoteCurrency.USDT, IndexQuoteCurrency.USDC],
   kraken: [

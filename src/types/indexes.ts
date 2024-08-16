@@ -1,9 +1,6 @@
 export enum IndexQuoteCryptoCurrency {
   USDC = 'USDC',
   USDT = 'USDT',
-  DAI = 'DAI',
-  BTC = 'BTC',
-  ETH = 'ETH',
 }
 
 export enum IndexQuoteFiatCurrency {

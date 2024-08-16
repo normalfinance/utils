@@ -1,6 +1,6 @@
 export const STABLECOINS = [
-  'USDC',
-  'USDT',
+  // 'USDC', // @dev excluded due to it being an IndexQuoteCryptoCurrency
+  // 'USDT', // @dev excluded due to it being an IndexQuoteCryptoCurrency
   'DAI',
   'LUSD',
   'FDUSD',

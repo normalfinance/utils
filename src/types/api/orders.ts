@@ -1,10 +1,13 @@
-import type { Investment } from '../../database';
+import type {
+  IndexQuoteCryptoCurrency,
+  IndexQuoteFiatCurrency,
+} from '../indexes';
 import type { OrderSide } from '../order';
 
 export type NewSingleExchangeOrder = {
   exchangeId: string;
   asset: string;
-  currency: Investment['currency'];
+  currency: IndexQuoteFiatCurrency | IndexQuoteCryptoCurrency;
   side: OrderSide;
   amount: string;
 };
