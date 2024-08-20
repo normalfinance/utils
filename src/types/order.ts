@@ -1,8 +1,3 @@
-export enum OrderSide {
-  BUY = 'BUY',
-  SELL = 'SELL',
-}
-
 export type DivestmentOrderIntent = {
   asset: string;
   amount: string;
