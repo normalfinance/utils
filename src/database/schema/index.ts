@@ -2,8 +2,6 @@ export * from './accountRecovery';
 export * from './divestmentOrders';
 export * from './divestments';
 export * from './exchanges';
-export * from './giftNotifications';
-export * from './gifts';
 export * from './indexCriteria';
 export * from './indexPerformances';
 export * from './indexWeights';

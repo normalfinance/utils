@@ -29,13 +29,6 @@ export enum TransactionalEmailTemplateId {
   BillingChargeFailed = 'billing_charge_failed',
   BillingChargeFailedRequires2fa = 'billing_charge_failed_requires_2fa',
 
-  // Gift
-  GiftCreated = 'gift_created',
-  GiftRedemptionSucceededSender = 'gift_redemption_succeeeded_sender',
-  GiftRedemptionFailedSender = 'gift_redemption_failed_sender',
-  GiftRedemptionSucceededRecipient = 'gift_redemption_succeeded_recipient',
-  GiftRedemptionFailedRecipient = 'gift_redemption_failed_recipient',
-
   // Schedule
   ScheduleCreated = 'schedule_created',
   ScheduleUpdated = 'schedule_updated',
@@ -119,38 +112,6 @@ export type TransactionalEmailArgs = {
   };
   [TransactionalEmailTemplateId.BillingChargeFailedRequires2fa]: {
     amount: string;
-  };
-
-  // Gift
-  [TransactionalEmailTemplateId.GiftCreated]: {
-    asset: string;
-    amount: string;
-    recipient: string;
-    action: string;
-  };
-  [TransactionalEmailTemplateId.GiftRedemptionSucceededSender]: {
-    asset: string;
-    amount: string;
-    recipient: string;
-    action: string;
-  };
-  [TransactionalEmailTemplateId.GiftRedemptionFailedSender]: {
-    asset: string;
-    amount: string;
-    recipient: string;
-    action: string;
-  };
-  [TransactionalEmailTemplateId.GiftRedemptionSucceededRecipient]: {
-    asset: string;
-    amount: string;
-    recipient: string;
-    action: string;
-  };
-  [TransactionalEmailTemplateId.GiftRedemptionFailedRecipient]: {
-    asset: string;
-    amount: string;
-    recipient: string;
-    action: string;
   };
 
   // Schedule

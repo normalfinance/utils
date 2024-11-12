@@ -1,7 +1,7 @@
 /* eslint-disable import/no-nodejs-modules */
 import { createHash } from 'crypto';
 
-import type { NewDivestment, NewGift, NewInvestment } from '../database';
+import type { NewDivestment, NewInvestment } from '../database';
 
 export const IdempotencyAlgorithm = 'md5'; // or sha256
 
@@ -85,18 +85,4 @@ export const createDivestmentIdempotencyKey = (divestment: NewDivestment) =>
     divestment.indexId,
     divestment.exchangeId,
     divestment.portion,
-  ]);
-
-/**
- * Creates an idempotency key for a gift.
- * @param gift - The gift.
- * @returns The idempotency key.
- */
-export const createGiftIdempotencyKey = (gift: NewGift) =>
-  createIdempotencyKey([
-    new Date().toJSON().slice(0, 10),
-    gift.exchangeId,
-    gift.asset,
-    gift.amount,
-    gift.recipient,
   ]);
