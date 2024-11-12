@@ -56,7 +56,6 @@ export const normalUrls = {
   },
 
   // Web Interface Urls
-  webInterfaceLendingUrl: `${NORMAL_WEB_URL}/lending`,
   webInterfaceIndexesUrl: `${NORMAL_WEB_URL}/indexes`,
   webInterfaceInvestmentsUrl: `${NORMAL_WEB_URL}/investments`,
   webInterfaceOrdersUrl: `${NORMAL_WEB_URL}/orders`,
