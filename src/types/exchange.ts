@@ -5,9 +5,11 @@ export type ExchangeBalance = {
   asset: string;
   amount: string;
 };
+
 export type PortfolioItem = ExchangeBalance & {
+  currency: string;
   price: string;
-  usdValue: string;
+  value: string;
   oneHourChange: string;
   oneDayChange: string;
   oneWeekChange: string;
@@ -21,7 +23,8 @@ export type ExchangeOrder = {
   orderId: string;
   side: string;
   amount: string;
-  usdValue: string;
+  currency: string;
+  value: string;
   price: string;
   fee: string;
   status: string;

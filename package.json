@@ -1,6 +1,6 @@
 {
   "name": "@normalfinance/utils",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "A Typescript modules for frequently used types, utilities, constants, and more across Normal repositories.",
   "homepage": "https://github.com/normalfinance/utils#readme",
   "bugs": {
@@ -46,7 +46,8 @@
     "lint:misc": "prettier '**/*.json' '**/*.md' '**/*.yml' '!.yarnrc.yml' --ignore-path .gitignore --no-error-on-unmatched-pattern",
     "prepack": "./scripts/prepack.sh",
     "test": "jest && jest-it-up",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "customerio-node": "^4.1.1",
