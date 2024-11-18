@@ -1,9 +1,8 @@
-export type DivestmentOrderIntent = {
+export type InvestmentOrderIntent = {
+  weight: string;
   asset: string;
   amount: string;
 };
-
-export type InvestmentOrderIntent = { weight: string } & DivestmentOrderIntent;
 
 export type OrderSummary = {
   asset: string;

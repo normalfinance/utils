@@ -1,6 +1,4 @@
 export * from './accountRecovery';
-export * from './divestmentOrders';
-export * from './divestments';
 export * from './exchanges';
 export * from './indexCriteria';
 export * from './indexPerformances';

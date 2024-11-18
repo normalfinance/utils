@@ -14,12 +14,6 @@ export enum TransactionalEmailTemplateId {
   InvestmentSucceeded = 'investment_succeeded',
   InvestmentFailed = 'investment_failed',
 
-  // Divestment
-  DivestmentCreated = 'divestment_created',
-  DivestmentCancelled = 'divestment_cancelled',
-  DivestmentSucceeded = 'divestment_succeeded',
-  DivestmentFailed = 'divestment_failed',
-
   // Referral
   ReferralCreated = 'referral_created',
   ReferralCodeCreated = 'referral_code_created',
@@ -73,24 +67,6 @@ export type TransactionalEmailArgs = {
   [TransactionalEmailTemplateId.InvestmentFailed]: {
     index: string;
     amount: string;
-  };
-
-  // Divestment
-  [TransactionalEmailTemplateId.DivestmentCreated]: {
-    index: string;
-    portion: string;
-  };
-  [TransactionalEmailTemplateId.DivestmentCancelled]: {
-    index: string;
-    portion: string;
-  };
-  [TransactionalEmailTemplateId.DivestmentSucceeded]: {
-    index: string;
-    portion: string;
-  };
-  [TransactionalEmailTemplateId.DivestmentFailed]: {
-    index: string;
-    portion: string;
   };
 
   // Referral

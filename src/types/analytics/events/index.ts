@@ -1,6 +1,5 @@
 import type { AuthEventName } from './auth';
 import type { BillingEventName } from './billing';
-import type { DivestmentEventName } from './divestment';
 import type { ExchangeEventName } from './exchange';
 import type { IndexEventName } from './indexes';
 import type { InvestmentEventName } from './investment';
@@ -10,7 +9,6 @@ import type { ScheduleEventName } from './schedule';
 
 export * from './auth';
 export * from './billing';
-export * from './divestment';
 export * from './exchange';
 export * from './indexes';
 export * from './investment';
@@ -26,5 +24,4 @@ export type AnalyticsEventName =
   | NotificationEventName
   | ReferralEventName
   | InvestmentEventName
-  | DivestmentEventName
   | ScheduleEventName;

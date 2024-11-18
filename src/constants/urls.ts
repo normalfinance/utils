@@ -49,9 +49,6 @@ export const normalUrls = {
       execute: '/v1/investments/execute',
       charge: '/v1/investments/charge',
     },
-    divestments: {
-      execute: '/v1/divestments/execute',
-    },
     schedules: '/v1/schedules',
   },
 
