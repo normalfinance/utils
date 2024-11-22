@@ -125,6 +125,11 @@ export const filterTokensByIndexCriteria = (
     filteredTokens = filteredTokens.filter(
       (token) => !STABLECOINS.includes(token.asset),
     );
+    // @dev manually remove stablecoins used for investment quote currencies
+    // so they're not mistakenly used when creating index weights
+    filteredTokens = filteredTokens.filter(
+      (token) => token.asset !== 'USDC' && token.asset !== 'USDT',
+    );
   }
 
   return filteredTokens;
