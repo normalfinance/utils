@@ -71,6 +71,13 @@ export const filterTokensByIndexCriteria = (
     const sortedByMarketCap = tokens.sort((a, b) =>
       new Decimal(a.marketCap).lessThan(b.marketCap) ? 1 : -1,
     );
+
+    // Manually remove stablecoins used for investment quote currencies
+    // so they're not mistakenly used when creating index weights
+    filteredTokens = sortedByMarketCap.filter(
+      (token) => token.asset !== 'USDC' && token.asset !== 'USDT',
+    );
+
     filteredTokens = sortedByMarketCap.slice(0, topX);
   }
 
@@ -124,11 +131,6 @@ export const filterTokensByIndexCriteria = (
   if (!includeStablecoins) {
     filteredTokens = filteredTokens.filter(
       (token) => !STABLECOINS.includes(token.asset),
-    );
-    // @dev manually remove stablecoins used for investment quote currencies
-    // so they're not mistakenly used when creating index weights
-    filteredTokens = filteredTokens.filter(
-      (token) => token.asset !== 'USDC' && token.asset !== 'USDT',
     );
   }
 
