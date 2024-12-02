@@ -57,6 +57,7 @@ jobs:
     # triggering a release.
     if: github.event_name == 'push' && startsWith(github.event.head_commit.author.name, 'github-actions')
     # needs: all-jobs-pass
+    needs: check-workflows
     outputs:
       IS_RELEASE: ${{ steps.is-release.outputs.IS_RELEASE }}
     runs-on: ubuntu-latest
