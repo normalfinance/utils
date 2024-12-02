@@ -11,10 +11,10 @@ import {
   boolean,
 } from 'drizzle-orm/pg-core';
 
-import { IndexQuoteCurrency } from '../../types';
-import { enumToPgEnum } from '../../utils/drizzle';
 import { exchanges } from './exchanges';
 import { indexes } from './indexes';
+import { IndexQuoteCurrency } from '../../types';
+import { enumToPgEnum } from '../../utils/drizzle';
 
 export type Schedule = typeof schedules.$inferSelect;
 export type NewSchedule = typeof schedules.$inferInsert;

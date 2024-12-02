@@ -12,13 +12,13 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
-import { IndexQuoteCurrency } from '../../types';
-import type { InferResultType } from '../../types/database/helpers';
-import { enumToPgEnum } from '../../utils/drizzle';
 import { exchanges } from './exchanges';
 import { indexes } from './indexes';
 import { investmentOrders } from './investmentOrders';
 import { schedules } from './schedules';
+import { IndexQuoteCurrency } from '../../types';
+import type { InferResultType } from '../../types/database/helpers';
+import { enumToPgEnum } from '../../utils/drizzle';
 
 export type Investment = typeof investments.$inferSelect;
 export type NewInvestment = typeof investments.$inferInsert;

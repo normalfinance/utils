@@ -11,10 +11,10 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
-import type { InferResultType } from '../../types/database/helpers';
 import { indexCriteria } from './indexCriteria';
 import { indexPerformances } from './indexPerformances';
 import { indexWeights } from './indexWeights';
+import type { InferResultType } from '../../types/database/helpers';
 
 export type Index = typeof indexes.$inferSelect;
 export type NewIndex = typeof indexes.$inferInsert;

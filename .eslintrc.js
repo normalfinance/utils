@@ -39,7 +39,17 @@ module.exports = {
       ],
     },
   ],
-
+  rules: {
+    'import/no-nodejs-modules': 'error', // Enable the rule
+    // Adjust the rule to allow PascalCase
+    'import/naming-convention': [
+      'error',
+      {
+        selector: 'default',
+        format: ['camelCase', 'PascalCase'], // Allow PascalCase for class imports
+      },
+    ],
+  },
   ignorePatterns: [
     '!.eslintrc.js',
     '!.prettierrc.js',

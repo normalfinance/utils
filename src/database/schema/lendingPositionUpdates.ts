@@ -10,9 +10,9 @@ import {
   pgEnum,
 } from 'drizzle-orm/pg-core';
 
-import type { InferResultType } from '../../types/database/helpers';
 import { lenders } from './lender';
 import { lendingProducts } from './lendingProducts';
+import type { InferResultType } from '../../types/database/helpers';
 
 export type LendingPositionUpdate = typeof lendingPositionUpdates.$inferSelect;
 export type NewLendingPositionUpdate =

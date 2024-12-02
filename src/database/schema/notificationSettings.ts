@@ -8,8 +8,8 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
-import type { InferResultType } from '../../types';
 import { notificationTypes } from './notificationTypes';
+import type { InferResultType } from '../../types';
 
 export type NotificationSetting = typeof notificationSettings.$inferSelect;
 export type NewNotificationSetting = typeof notificationSettings.$inferInsert;

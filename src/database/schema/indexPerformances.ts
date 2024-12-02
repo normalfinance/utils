@@ -8,8 +8,8 @@ import {
   date,
 } from 'drizzle-orm/pg-core';
 
-import type { InferResultType } from '../../types/database/helpers';
 import { indexes } from './indexes';
+import type { InferResultType } from '../../types/database/helpers';
 
 export type IndexPerformance = typeof indexPerformances.$inferSelect;
 export type NewIndexPerformance = typeof indexPerformances.$inferInsert;

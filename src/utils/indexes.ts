@@ -1,3 +1,4 @@
+// eslint-disable-next-line import-x/no-named-as-default, @typescript-eslint/naming-convention
 import Decimal from 'decimal.js';
 
 import { STABLECOINS } from '../constants';
@@ -12,6 +13,7 @@ import { IndexFee } from '../types/fee';
 
 /**
  * Calculates the fee for an index investment.
+ *
  * @param monthlyVolume - The user's total investments for a given period of time.
  * @param investment - The new investment amount.
  * @returns The index fee for a new investment.
@@ -34,14 +36,17 @@ export const calculateIndexFee = (
 
 /**
  * Ordres a list of index weights by descending weight.
+ *
  * @param weights - A list of index weights.
  * @returns The ordered index weights.
  */
-export const orderIndexWeightsByDescendingWeight = (weights: IndexWeight[]) =>
-  weights.sort((a, b) => (a.weight < b.weight ? 1 : -1));
+export const orderIndexWeightsByDescendingWeight = (
+  weights: IndexWeight[],
+): IndexWeight[] => weights.sort((a, b) => (a.weight < b.weight ? 1 : -1));
 
 /**
  * Filters a list of Tokens by Index Criteria.
+ *
  * @param criteria - The criteria to select tokens by.
  * @param tokens - The list of tokens to filter.
  * @returns A list of filtered tokens.
@@ -139,6 +144,7 @@ export const filterTokensByIndexCriteria = (
 
 /**
  * Takes in a list of tokens and returns a weight object based on market cap.
+ *
  * @param indexId - The index id.
  * @param tokens - Tokens to weight.
  * @param withSquareRoot - Flag to use square root weighting.

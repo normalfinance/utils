@@ -10,6 +10,7 @@ import type { TransactionalEmailArgs } from '../types/analytics/email';
 
 /**
  * Creates a Customer.io API Client for email sending.
+ *
  * @param apiKey - Customer.io API key.
  * @returns A Cusotmer.io API Client.
  */
@@ -21,6 +22,7 @@ export const createAPIClient = async (apiKey: string): Promise<APIClient> => {
 
 /**
  * Creates a Customer.io Track Client for page views, events, and property setting.
+ *
  * @param siteId - Customer.io Site id.
  * @param apiKey - Customer.io API key.
  * @returns A Cusotmer.io Track Client.
@@ -36,6 +38,7 @@ export const createTrackClient = async (
 
 /**
  * Sends a transactional email using a Customer.io template.
+ *
  * @param client - A Customer.io API Client.
  * @param to - The to email address.
  * @param templateId - The Customer.io email template id.
@@ -49,7 +52,7 @@ export const sendEmail = async <
   to: string,
   templateId: TransactionalEmailTemplateId,
   data: TransactionalEmailArgs[TransactionalEmailTemplateId],
-) => {
+): Promise<any> => {
   const params = new SendEmailRequest({
     transactional_message_id: templateId as string,
     to,

@@ -8,9 +8,9 @@ import {
   decimal,
 } from 'drizzle-orm/pg-core';
 
-import type { InferResultType } from '../../types/database/helpers';
 import { lenders } from './lender';
 import { lendingProducts } from './lendingProducts';
+import type { InferResultType } from '../../types/database/helpers';
 
 export type LendingDeposit = typeof lendingDeposits.$inferSelect;
 export type NewLendingDeposit = typeof lendingDeposits.$inferInsert;

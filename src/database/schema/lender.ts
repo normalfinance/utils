@@ -10,11 +10,11 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
-import type { InferResultType } from '../../types/database/helpers';
 import { lendingDeposits } from './lendingDeposits';
 import { lendingPositionUpdates } from './lendingPositionUpdates';
 import { lendingSummaries } from './lendingSummaries';
 import { lendingWithdrawals } from './lendingWithdrawals';
+import type { InferResultType } from '../../types/database/helpers';
 
 export type Lender = typeof lenders.$inferSelect;
 export type NewLender = typeof lenders.$inferInsert;

@@ -1,4 +1,4 @@
-export * from './deposits';
+export type * from './deposits';
 export * from './orders';
 
 export enum AmountType {

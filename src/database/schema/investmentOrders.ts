@@ -8,8 +8,8 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
-import type { InferResultType } from '../../types/database/helpers';
 import { investments } from './investments';
+import type { InferResultType } from '../../types/database/helpers';
 
 export type InvestmentOrder = typeof investmentOrders.$inferSelect;
 export type NewInvestmentOrder = typeof investmentOrders.$inferInsert;

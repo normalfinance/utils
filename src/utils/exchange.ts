@@ -3,13 +3,14 @@ import type { Exchange } from '../database';
 
 export const FeeAsset = 'SOL';
 
-export const getFeeAddress = (exchangeType: Exchange['type']) =>
+export const getFeeAddress = (exchangeType: Exchange['type']): string =>
   exchangeType === 'coinbase'
     ? 'billing@normalfinance.io'
     : '7cbDHP5ksonpWJXmTWGsuD8yKVTxC4RfZ26JCYbSxRqX';
 
 /**
  * Returns a base and quote asset from a non-delimited string.
+ *
  * @param exchangeType - The exchange the string came from.
  * @param symbol - The combined asset pair string.
  * @returns The base and quote assets.

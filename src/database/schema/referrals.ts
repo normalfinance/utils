@@ -9,8 +9,8 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
-import type { InferResultType } from '../../types/database/helpers';
 import { referralCodes } from './referralCodes';
+import type { InferResultType } from '../../types/database/helpers';
 
 export type Referral = typeof referrals.$inferSelect;
 export type NewReferral = typeof referrals.$inferInsert;
