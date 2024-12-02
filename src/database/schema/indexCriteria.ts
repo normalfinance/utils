@@ -22,4 +22,5 @@ export const indexCriteria = pgTable('indexCriteria', {
   maxMarketCap: bigint('maxMarketCap', { mode: 'number' }),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
+  deletedAt: timestamp('deletedAt'), // soft delete
 });

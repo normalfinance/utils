@@ -38,4 +38,5 @@ export const exchanges = pgTable('exchanges', {
   version: ExchangeVersion('version').notNull(),
   createdAt: timestamp('createdAt').defaultNow().notNull(),
   updatedAt: timestamp('updatedAt').defaultNow().notNull(),
+  deletedAt: timestamp('deletedAt'), // soft delete
 });

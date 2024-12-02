@@ -44,6 +44,7 @@ export const indexes = pgTable(
     strategy: IndexStategy('stategy').notNull(),
     createdAt: timestamp('createdAt').defaultNow().notNull(),
     updatedAt: timestamp('updatedAt').defaultNow().notNull(),
+    deletedAt: timestamp('deletedAt'), // soft delete
   },
   (table) => ({
     unq: uniqueIndex().on(table.userId, table.title),

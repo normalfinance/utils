@@ -26,6 +26,7 @@ export const referralCodes = pgTable(
     userId: uuid('userId'),
     code: varchar('code', { length: 21 }).notNull(),
     createdAt: timestamp('createdAt').defaultNow().notNull(),
+    deletedAt: timestamp('deletedAt'), // soft delete
   },
   (table) => ({
     unq: uniqueIndex().on(table.code),
