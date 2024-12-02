@@ -50,7 +50,7 @@ jobs:
   #         fi
 
   is-release:
-    # Filtering by `push` events ensures that we only release from the `main` branch, which is a
+    # Filtering by `push` events ensures that we only release from the `master` branch, which is a
     # requirement for our npm publishing environment.
     # The commit author should always be 'github-actions' for releases created by the
     # 'create-release-pr' workflow, so we filter by that as well to prevent accidentally
