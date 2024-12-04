@@ -4,27 +4,15 @@ import type {
   IndexQuoteFiatCurrency,
 } from '../indexes';
 
-export enum PriceType {
-  BID = 'BID',
-  ASK = 'ASK',
-}
-
-export enum OrderSide {
-  BUY = 'BUY',
-  SELL = 'SELL',
-}
-
-export enum OrderType {
-  MARKET = 'MARKET',
-  LIMIT = 'LIMIT',
-}
-
-export enum OrderTimeInForce {
-  GTC = 'GTC',
-  IOC = 'IOC',
-  GTD = 'GTD',
-  FOK = 'FOK',
-}
+export type PriceSide = 'BID' | 'ASK';
+export type OrderSide = 'BUY' | 'SELL';
+export type OrderType =
+  | 'MARKET'
+  | 'LIMIT'
+  | 'TAKE_PROFIT'
+  | 'STOP_LOSS'
+  | 'BRACKET';
+export type OrderTimeInForce = 'GTC' | 'IOC' | 'GTD' | 'FOK';
 
 export type NewSingleExchangeOrder = {
   exchangeId: string;
